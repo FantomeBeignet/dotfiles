@@ -18,6 +18,7 @@ Changes :
 
 * [Ranger](https://github.com/ranger/ranger/)
 * [Ranger Devicons](https://github.com/alexanderjeurissen/ranger\_devicons)
+* [Source Code Pro NERDFont](https://github.com/ryanoasis/nerd-fonts)
 
 Binding changes :
 

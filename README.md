@@ -22,5 +22,5 @@ Changes :
 
 Binding changes :
 
-* <Space> to open current dir in shell
-* <x> to mark a file
+* `<Space>` to open current dir in shell
+* `<x>` to mark a file

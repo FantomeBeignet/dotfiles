@@ -1,0 +1,23 @@
+general {
+	interval = 30
+}
+
+order += "volume master"
+order += "battery 1"
+order += "tztime local"
+
+tztime local {
+	format = "%A %e %B  %H:%M"
+}
+ battery 1 {
+        format = "%percentage"
+        format_down = "No battery"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+volume master {
+        format = "♪  %volume"
+        format_muted = "♪ muted (%volume)"
+        device = "pulse:1"
+}

@@ -131,6 +131,7 @@ alias ytdl='youtube-dl'
 alias la='ls -lah'
 alias sn='shutdown now'
 alias android-studio='~/android-studio/bin/studio.sh'
+alias visual='/usr/local/bin/visual/VisUAL.sh &'
 
 function activate() {
 	if [[ -d .venv ]]

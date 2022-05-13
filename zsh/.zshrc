@@ -144,3 +144,8 @@ function activate() {
 
 # ZSH function for alacritty
 fpath+=~/.zsh_functions
+
+# opam configuration
+test -r /home/tom/.opam/opam-init/init.zsh && . /home/tom/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+eval $(thefuck --alias)

@@ -212,10 +212,11 @@ exec_always --no-startup-id picom &
 
 # Startup apps and workspaces
 assign [class="Alacritty"] 1
-assign [class="Firefox"] 2
-assign [class="Thunderbird"] 3
+assign [class="firefox"] 2
+assign [class="Code"] 3
+assign [class="obsidian"] 4
 
 exec --no-startup-id 'alacritty'
 exec --no-startup-id 'firefox'
-exec --no-startup-id 'thunderbird'
-
+exec --no-startup-id 'obsidian'
+exec --no-startup-id 'code'

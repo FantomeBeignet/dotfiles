@@ -5,6 +5,12 @@ require("neo-tree").setup({
     } ,
     filesystem = {
         filtered_items = {
+            bo = {
+                buftype = {
+                    "terminal",
+                    "quickfix",
+                },
+            },
             always_show = {
                 ".gitignore",
             }

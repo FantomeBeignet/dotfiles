@@ -1,6 +1,6 @@
 configuration {
-	modi: "window,run,ssh,combi,file-browser,drun";
-	combi-modi: "run,file-browser";
+	modi: "window,run,ssh,combi,filebrowser,drun";
+	combi-modi: "run,filebrowser";
 }
 
 @import "theme.rasi"

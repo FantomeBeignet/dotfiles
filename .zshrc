@@ -149,3 +149,6 @@ fpath+=~/.zsh_functions
 test -r /home/tom/.opam/opam-init/init.zsh && . /home/tom/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 eval $(thefuck --alias)
+
+# Starship prompt
+eval "$(starship init zsh)"

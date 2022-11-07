@@ -1,0 +1,22 @@
+# Format of the whole prompt
+format = '$username - \[$directory\] $all'
+
+# Don't add a new line before a prompt
+add_newline = false
+
+# Symbol to display before the commands
+[character]
+success_symbol = "[λ >](bold green)"
+error_symbol = "[λ >](bold red)"
+
+# Username display
+[username]
+style_user = "cyan bold"
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+# Working directory display
+[directory]
+style = "bold green"
+format = '[$path]($style)[$read_only]($read_only_style)'

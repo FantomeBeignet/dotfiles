@@ -94,7 +94,7 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  size: 13
+  size: 14
   normal:
     # Font family
     #
@@ -145,7 +145,7 @@ font:
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
+  offset:
     x: 0
     y: 1
 

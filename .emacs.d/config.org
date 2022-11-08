@@ -111,6 +111,13 @@
 	:if (display-graphic-p))
 #+end_src
 
+** Enable colors in compilation buffer
+
+#+begin_src emacs-lisp
+(use-package ansi-color
+    :hook (compilation-filter . ansi-color-compilation-filter)) 
+#+end_src
+
 * Dashboard
 
 #+begin_src emacs-lisp
@@ -414,4 +421,13 @@
   (use-package treemacs-magit
     :after (treemacs magit)
     :ensure t)
+#+end_src
+
+*** Ledger mode
+
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :init
+    (setq ledger-clear-whole-transaction 1)
+    :mode "\\.dat\\'")
 #+end_src

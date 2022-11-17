@@ -74,10 +74,10 @@
 
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
-		      :font "SauceCodePro Nerd Font 11"
+		      :font "SauceCodePro Nerd Font 14"
 		      :weight 'medium)
   (set-face-attribute 'fixed-pitch nil
-		      :font "SauceCodePro Nerd Font 11"
+		      :font "SauceCodePro Nerd Font 14"
 		      :weight 'medium)
   (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 14"))
 #+end_src
@@ -157,12 +157,6 @@
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 #+end_src
 
-** Dired rebinds
-
-#+begin_src emacs-lisp
-(define-key dired-mode-map "h" 'dired-up-directory)
-#+end_src
-
 ** General package for leader key bindings
 
 #+begin_src emacs-lisp
@@ -208,6 +202,24 @@
   (setq which-key-popup-type 'minibuffer)
   (setq which-key-idle-delay 0.5)
   :config (which-key-mode))
+#+end_src
+
+*** Prescient for better completion filtering
+
+#+begin_src emacs-lisp
+  (use-package prescient
+    :config
+    (prescient-persist-mode))
+
+  (use-package ivy-prescient
+    :after ivy
+    :config
+    (ivy-prescient-mode))
+
+  (use-package company-prescient
+    :after company
+    :config
+    (company-prescient-mode))
 #+end_src
 
 *** ivy, swiper and counsel for completion in minibuffer

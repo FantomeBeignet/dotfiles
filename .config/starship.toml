@@ -1,5 +1,5 @@
 # Format of the whole prompt
-format = '$username - \[$directory\] $all'
+format = '$username - \[$directory\] $git_branch$git_commit$git_state$git_metrics$git_status$fill$all'
 
 # Don't add a new line before a prompt
 add_newline = false
@@ -20,3 +20,16 @@ show_always = true
 [directory]
 style = "bold green"
 format = '[$path]($style)[$read_only]($read_only_style)'
+
+# Kinda a hack to display a "right prompt"
+[fill]
+symbol = " "
+
+[package]
+format = "[$symbol$version]($style) "
+
+[c]
+detect_files = ["Makefile"]
+
+[cmd_duration]
+disabled = true

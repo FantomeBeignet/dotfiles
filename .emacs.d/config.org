@@ -170,7 +170,9 @@
       "d" 'dired
       "e" 'dired-jump
       "f" 'find-file
-      "q" 'open-dashboard))
+      "q" 'open-dashboard
+      "h" 'lsp-ui-doc-toggle
+      "RET" 'eshell))
 #+end_src
 
 ** Evil mode for vim like key bindings
@@ -281,8 +283,13 @@
     (company-idle-delay 0.0)
     (setq local company-backends '((company-capf))))
 
+  (use-package flycheck
+    :defer)
+
   (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode))
+    :hook (lsp-mode . lsp-ui-mode)
+    :init
+    (setq lsp-ui-doc-position 'at-point))
 #+end_src
 
 *** Treesitter for better syntax highlighting

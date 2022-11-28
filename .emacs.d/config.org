@@ -381,6 +381,14 @@
      ((and (derived-mode-p 'comint-mode)  (fboundp 'comint-send-input))
       (comint-send-input))))
   (advice-add #'corfu-insert :after #'corfu-send-shell)
+
+  (use-package kind-icon
+    :after corfu
+    :custom
+    (kind-icon-use-icons nil)
+    (kind-icon-default-face 'corfu-default)
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
 *** Vertico for minibuffer completion

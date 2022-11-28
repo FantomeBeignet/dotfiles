@@ -265,11 +265,15 @@
 #+end_src
 
 *** Prescient for better completion filtering
+*** Smartparens
 
 #+begin_src emacs-lisp
   (use-package prescient
+  (use-package smartparens
     :config
     (prescient-persist-mode))
+    (require 'smartparens-config))
+#+end_src
 
   (use-package ivy-prescient
     :after ivy
@@ -388,18 +392,7 @@
     :config (counsel-projectile-mode))
 #+end_src
 
-*** electric-pairs for pair matching
 
-#+begin_src emacs-lisp
-(setq electric-pair-pairs
-      '(
-	(?\" . ?\")
-	(?\' . ?\')
-	(?\( . ?\))
-	(?\[ . ?\])
-	(?\{ . ?\})
-	))
-(electric-pair-mode 1)
 #+end_src
 
 *** Magit for better git workflow

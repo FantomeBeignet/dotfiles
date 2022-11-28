@@ -264,94 +264,151 @@
     :config (which-key-mode))
 #+end_src
 
-*** Prescient for better completion filtering
 *** Smartparens
 
 #+begin_src emacs-lisp
-  (use-package prescient
   (use-package smartparens
     :config
-    (prescient-persist-mode))
     (require 'smartparens-config))
 #+end_src
 
-  (use-package ivy-prescient
-    :after ivy
-    :config
-    (ivy-prescient-mode))
+** Completion frameworks
 
-  (use-package company-prescient
-    :after company
-    :config
-    (company-prescient-mode))
-#+end_src
-
-*** ivy, swiper and counsel for completion in minibuffer
+*** Savehist to save search history
 
 #+begin_src emacs-lisp
-  (use-package ivy
-    :diminish
-    :bind (("C-s" . swiper)
-	   :map ivy-minibuffer-map
-	   ("TAB" . ivy-alt-done)	
-	   ("C-l" . ivy-alt-done)
-	   ("C-j" . ivy-next-line)
-	   ("C-k" . ivy-previous-line)
-	   :map ivy-switch-buffer-map
-	   ("C-k" . ivy-previous-line)
-	   ("C-l" . ivy-done)
-	   ("C-d" . ivy-switch-buffer-kill)
-	   :map ivy-reverse-i-search-map
-	   ("C-k" . ivy-previous-line)
-	   ("C-d" . ivy-reverse-i-search-kill))
-    :config
-    (ivy-mode 1))
-  (use-package counsel
-    :after ivy
-    :config (counsel-mode)
-    :bind ("M-x" . counsel-M-x)
-    ("C-x b" . counsel-ibuffer)
-    ("C-x C-f" . counsel-find-file))
-  (use-package swiper
-    :after ivy)
+    (use-package savehist
+      :config
+      (setq history-length 25)
+      (savehist-mode 1))
+#+end_src
 
-  ;; Ivy-rich for even better ivy
-  (use-package ivy-rich
-    :init (ivy-rich-mode 1)
-    :config (setq ivy-rich-path-style 'abbrev))
+*** Orderless completion style
+
+#+begin_src emacs-lisp
+  (use-package orderless
+    :init
+    (setq completion-styles '(orderless)
+	  completion-category-defaults nil
+	  completion-category-overrides '((file (styles . (partial-completion))))))
+#+end_src
+
+*** Consult for completion in minibuffer
+
+#+begin_src emacs-lisp
+  (defun my/get-project-root ()
+    (when (fboundp 'projectile-project-root)
+      (projectile-project-root)))
+
+  (use-package consult
+    :bind (("C-s" . consult-line)
+	   :map minibuffer-local-map
+	   ("C-r" . consult-history))
+    :custom
+    (consult-project-root-function #'my/get-project-root)
+    (completion-in-region-function #'consult-completion-in-region))
+  (my/leader-keys
+    "m" 'consult-man
+    "b" 'consult-buffer
+    "o" 'consult-file-externally)
+#+end_src
+
+*** Consult for completion at point
+
+#+begin_src emacs-lisp
+  (use-package corfu
+    :bind (:map corfu-map
+		("C-j" . corfu-next)
+		("C-k" . corfu-previous))
+    :hook (eshell-mode-hook . (lambda ()
+				(setq-local corfu-auto nil)
+				(corfu-mode)))
+    :init
+    (setq corfu-auto t
+	  corfu-auto-prefix 2
+	  corfu-quit-no-match 'separator
+	  corfu-popupinfo-mode t
+	  corfu-cycle t)
+    (global-corfu-mode)
+    (corfu-history-mode))
+
+  (defun corfu-send-shell (&rest _)
+    "Send completion candidate when inside comint/eshell."
+    (cond
+     ((and (derived-mode-p 'eshell-mode) (fboundp 'eshell-send-input))
+      (eshell-send-input))
+     ((and (derived-mode-p 'comint-mode)  (fboundp 'comint-send-input))
+      (comint-send-input))))
+  (advice-add #'corfu-insert :after #'corfu-send-shell)
+#+end_src
+
+*** Vertico for minibuffer completion
+
+#+begin_src emacs-lisp
+  (use-package vertico
+    :init
+    (vertico-mode)
+    (setq vertico-cycle t)
+    :bind (:map vertico-map
+		("C-j" . vertico-next)
+		("C-k" . vertico-previous)
+		("C-f" . vertico-exit)))
+
+  (use-package vertico-directory
+    :after vertico
+    :ensure nil
+    :bind (:map vertico-map
+		("DEL" . vertico-directory-up)
+		("DEL" . vertico-directory-delete-char))
+    :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+#+end_src
+
+*** Marginalia for better minibuffer annotations
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :bind (:map minibuffer-local-map
+		("M-A" . marginalia-cycle))
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :init
+    (marginalia-mode))
 #+end_src
 
 ** Programming
 
-*** LSP-mode for IDE like features
+*** Eglot for lsp feature
 
 #+begin_src emacs-lisp
-  (use-package lsp-mode
-    :init
-    (setq lsp-keymap-prefix "C-l")
-    :commands (lsp lsp-deferred)
-    :hook (prog-mode . lsp-deferred)
-    :config (setq lsp-warn-no-matched-clients 'nil))
-
-  (use-package company
-    :after lsp-mode
-    :hook (prog-mode . company-mode)
-    :bind (:map company-active-map
-		("<tab>" . company-complete-selection))
-    (:map lsp-mode-map
-	  ("<tab>" . company-indent-or-complete-common))
+  (use-package eglot
     :custom
-    (company-minimum-prefix-length 1)
-    (company-idle-delay 0.0)
-    (setq local company-backends '((company-capf))))
+    (eglot-autoshutdown t)
+    :init
+    (setq completion-category-defaults nil)
+    :hook
+    (typescript-mode . eglot-ensure))
 
+  (use-package consult-eglot)
+#+end_src
+
+*** Flycheck for syntax checking on the fly
+
+#+begin_src emacs-lisp
   (use-package flycheck
     :defer)
+#+end_src
 
-  (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :init
-    (setq lsp-ui-doc-position 'at-point))
+*** Languages
+
+**** Typescript
+
+#+begin_src emacs-lisp
+(use-package typescript-mode
+  :init
+  (define-derived-mode typescript-tsx-mode typescript-mode "TSX")
+  (add-to-list 'auto-mode-alist `(,(rx ".tsx" eos) . typescript-tsx-mode))
+  :custom
+  (typescript-indent-level 2))
 #+end_src
 
 *** Treesitter for better syntax highlighting

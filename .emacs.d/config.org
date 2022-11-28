@@ -219,6 +219,12 @@
 
 * Configuration of built-in utilities
 
+** Auto-revert to automatically refresh buffer
+
+#+begin_src emacs-lisp
+  (global-auto-revert-mode)
+#+end_src
+
 ** Dired
 
 #+begin_src emacs-lisp

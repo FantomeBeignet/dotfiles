@@ -186,12 +186,36 @@
     (setq evil-want-C-u-scroll t)
     :config
     (evil-mode 1))
+
   (use-package evil-collection
     :after evil
     :config
     (evil-collection-init))
 #+end_src
 
+** Evil lion for text aligning
+
+#+begin_src emacs-lisp
+  (use-package evil-lion
+    :hook
+    (evil-mode . evil-lion-mode))
+#+end_src
+
+** Evil surround
+
+#+begin_src emacs-lisp
+  (use-package evil-surround
+    :hook
+    (evil-mode . evil-surround-mode))
+#+end_src
+
+** Evil commentary to comment blocks of code
+
+#+begin_src emacs-lisp
+  (use-package evil-commentary
+    :hook
+    (evil-mode . evil-commentary-mode))
+#+end_src
 * Packages
 
 ** Utility

@@ -334,7 +334,8 @@
 	  corfu-auto-prefix 2
 	  corfu-quit-no-match 'separator
 	  corfu-popupinfo-mode t
-	  corfu-cycle t)
+	  corfu-cycle t
+	  corfu-popupinfo-delay 0.0)
     (global-corfu-mode)
     (corfu-history-mode))
 

@@ -436,6 +436,15 @@
 
   (use-package consult-projectile)
 
+  (my/leader-keys
+    "pp" 'consult-projectile-switch-project
+    "pf" 'consult-projectile-find-file
+    "pd" 'consult-projectile-find-dir
+    "pb" 'consult-projectile-switch-to-buffer
+    "pr" 'consult-projectile-recentf
+    "pc" 'projectile-compile-project
+    "pt" 'projectile-test-project
+    "pe" 'projectile-dired)
 #+end_src
 
 *** Magit for better git workflow

@@ -417,6 +417,17 @@
   (typescript-indent-level 2))
 #+end_src
 
+**** Svelte
+
+#+begin_src emacs-lisp
+  (use-package web-mode)
+  (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+		 `(web-mode . ,(eglot-alternatives
+				'(("svelteserver" "--stdio"))))))
+#+end_src
+
 *** Treesitter for better syntax highlighting
 
 #+begin_src emacs-lisp

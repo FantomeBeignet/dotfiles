@@ -62,12 +62,12 @@
   (dolist (mode '(eshell-mode-hook
 		  term-mode-hook))
     (add-hook mode (lambda() (display-line-numbers-mode 0))))
-  #+end_src
+#+end_src
 
 ** Show column number in modeline
 
 #+begin_src emacs-lisp
-(column-number-mode)
+  (column-number-mode)
 #+end_src
 
 ** Fonts
@@ -107,14 +107,14 @@
 ** Icons
 
 #+begin_src emacs-lisp
-      (use-package all-the-icons
-	:if (display-graphic-p))
+  (use-package all-the-icons
+    :if (display-graphic-p))
 #+end_src
 
 ** Enable colors in compilation buffer
 
 #+begin_src emacs-lisp
-(use-package ansi-color
+  (use-package ansi-color
     :hook (compilation-filter . ansi-color-compilation-filter)) 
 #+end_src
 
@@ -132,8 +132,8 @@
   (setq dashboard-center-content t) ;; Center content in the window
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '(
-			  (projects . 5) ;; Display 5 last projects
-			  (recents . 5) ;; Display 5 last opened files
+			  (projects  . 5) ;; Display 5 last projects
+			  (recents   . 5) ;; Display 5 last opened files
 			  (bookmarks . 5))) ;; Display 5 bookmarks
   (setq dashboard-set-heading-icons t) ;; Icons for sections
   (setq dashboard-set-file-icons t) ;; Icons for items
@@ -370,16 +370,16 @@
 *** Ocaml specific config
 
 #+begin_src emacs-lisp
-(let ((opam-share (ignore-errors (car (process-lines "opam" "var" "share")))))
-      (when (and opam-share (file-directory-p opam-share))
-       ;; Register Merlin
-       (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-       (autoload 'merlin-mode "merlin" nil t nil)
-       ;; Automatically start it in OCaml buffers
-       (add-hook 'tuareg-mode-hook 'merlin-mode t)
-       (add-hook 'caml-mode-hook 'merlin-mode t)
-       ;; Use opam switch to lookup ocamlmerlin binary
-       (setq merlin-command 'opam)))
+  (let ((opam-share (ignore-errors (car (process-lines "opam" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      ;; Register Mcerlin
+      (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+      (autoload 'merlin-mode "merlin" nil t nil)
+      ;; Automatically start it in OCaml buffers
+      (add-hook 'tuareg-mode-hook 'merlin-mode t)
+      (add-hook 'caml-mode-hook 'merlin-mode t)
+      ;; Use opam switch to lookup ocamlmerlin binary
+      (setq merlin-command 'opam)))
 #+end_src
 
 ** Misc
@@ -400,16 +400,13 @@
 
 #+begin_src emacs-lisp
   (use-package helpful
-    :config
-    (setq counsel-describe-function-function #'helpful-callable)
-    (setq counsel-describe-variable-function #'helpful-variable)
     :bind
-    ("C-h f" . helpful-callable)
-    ("C-h v" . helpful-variable)
-    ("C-h h" . helpful-key)
+    ("C-h f"   . helpful-callable)
+    ("C-h v"   . helpful-variable)
+    ("C-h h"   . helpful-key)
     ("C-h C-d" . helpful-at-point)
-    ("C-h F" . helpful-function)
-    ("C-h C" . helpful-command))
+    ("C-h F"   . helpful-function)
+    ("C-h C"   . helpful-command))
 #+end_src
 
 *** Ledger mode

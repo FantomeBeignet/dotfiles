@@ -482,10 +482,6 @@
 
 #+begin_src emacs-lisp
   (use-package diff-hl
-    :custom-face
-    '(diff-hl-change ((t (:background (doom-color 'yellow))))) 
-    '(diff-hl-insert ((t (:background (doom-color 'green))))) 
-    '(diff-hl-delete ((t (:background (doom-color 'red))))) 
     :init
     (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
     (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)

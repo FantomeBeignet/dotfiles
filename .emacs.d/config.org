@@ -165,14 +165,14 @@
     (general-evil-setup t)
     (general-create-definer my/leader-keys
       :keymaps '(normal visual emacs)
-      :prefix "SPC")
+      :prefix "SPC"
+      :global-prefix "C-SPC")
     (my/leader-keys
-      "d" 'dired
-      "e" 'dired-jump
-      "f" 'find-file
-      "q" 'open-dashboard
-      "h" 'lsp-ui-doc-toggle
-      "RET" 'eshell))
+      "d"      'dired
+      "e"      'dired-jump
+      "f"      'find-file
+      "q"      'open-dashboard
+      "RET"    'eshell))
 #+end_src
 
 ** Evil mode for vim like key bindings

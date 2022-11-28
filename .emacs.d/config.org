@@ -358,12 +358,20 @@
     :init
     (setq corfu-auto t
 	  corfu-auto-prefix 2
+	  corfu-preselect-first t
+	  corfu-preview-current t
 	  corfu-quit-no-match 'separator
-	  corfu-popupinfo-mode t
 	  corfu-cycle t
-	  corfu-popupinfo-delay 0.0)
+	  corfu-min-width 40
+	  corfu-scroll-margin 4)
     (global-corfu-mode)
     (corfu-history-mode))
+
+  (use-package corfu-popupinfo
+    :after corfu
+    :ensure nil
+    :init
+    (corfu-popupinfo-mode))
 
   (defun corfu-send-shell (&rest _)
     "Send completion candidate when inside comint/eshell."

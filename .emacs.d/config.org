@@ -432,13 +432,9 @@
   (use-package projectile
     :diminish (projectile-mode)
     :config (projectile-mode)
-    :custom ((projectile-completion-system 'ivy))
     :bind-keymap ("C-c p" . projectile-command-map))
-  ;; integration with counsel
-  (use-package counsel-projectile
-    :config (counsel-projectile-mode))
-#+end_src
 
+  (use-package consult-projectile)
 
 #+end_src
 

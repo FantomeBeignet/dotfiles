@@ -216,6 +216,40 @@
     :hook
     (evil-mode . evil-commentary-mode))
 #+end_src
+
+* Configuration of built-in utilities
+
+** Dired
+
+#+begin_src emacs-lisp
+  (use-package dired
+    :ensure nil
+    :commands
+    (dired dired-jump)
+    :custom
+    ((dired-listing-switches "-agho --group-directories-first")))
+
+  (use-package dired-single
+    :defer t)
+
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer)
+#+end_src
+
+** Eshell
+
+#+begin_src emacs-lisp
+  (use-package eshell-z
+    :hook ((eshell-mode . (lambda () (require 'eshell-z)))
+	   (eshell-z-change-dir .  (lambda () (eshell/pushd (eshell/pwd))))))
+
+  (use-package eshell-syntax-highlighting
+    :after esh-mode
+    :config
+    (eshell-syntax-highlighting-global-mode 1))
+#+end_src
+
 * Packages
 
 ** Utility

@@ -257,11 +257,11 @@
 *** which-key
 
 #+begin_src emacs-lisp
-(use-package which-key
-  :init
-  (setq which-key-popup-type 'minibuffer)
-  (setq which-key-idle-delay 0.5)
-  :config (which-key-mode))
+  (use-package which-key
+    :init
+    (setq which-key-popup-type 'minibuffer)
+    (setq which-key-idle-delay 0.5)
+    :config (which-key-mode))
 #+end_src
 
 *** Prescient for better completion filtering

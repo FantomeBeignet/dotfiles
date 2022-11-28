@@ -451,6 +451,14 @@
 
 #+begin_src emacs-lisp
   (use-package magit)
+
+  (my/leader-keys
+    "gs" 'magit-status
+    "gc" 'magit-commit
+    "gP" 'magit-push
+    "gp" 'magit-pull
+    "gl" 'magit-log-current
+    "gf" 'magit-fetch)
 #+end_src
 
 *** diff-hl for highlighting changes in gutter

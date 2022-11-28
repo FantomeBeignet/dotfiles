@@ -390,9 +390,7 @@
     :custom
     (eglot-autoshutdown t)
     :init
-    (setq completion-category-defaults nil)
-    :hook
-    (typescript-mode . eglot-ensure))
+    (setq completion-category-defaults nil))
 
   (use-package consult-eglot)
 #+end_src
@@ -409,12 +407,13 @@
 **** Typescript
 
 #+begin_src emacs-lisp
-(use-package typescript-mode
-  :init
-  (define-derived-mode typescript-tsx-mode typescript-mode "TSX")
-  (add-to-list 'auto-mode-alist `(,(rx ".tsx" eos) . typescript-tsx-mode))
-  :custom
-  (typescript-indent-level 2))
+  (use-package typescript-mode
+    :init
+    (define-derived-mode typescript-tsx-mode typescript-mode "TSX")
+    (add-to-list 'auto-mode-alist `(,(rx ".tsx" eos) . typescript-tsx-mode))
+    :custom
+    (typescript-indent-level 2))
+  (add-hook 'typescript-mode-hook 'eglot-ensure)
 #+end_src
 
 **** Svelte
@@ -426,6 +425,7 @@
     (add-to-list 'eglot-server-programs
 		 `(web-mode . ,(eglot-alternatives
 				'(("svelteserver" "--stdio"))))))
+  (add-hook 'web-mode-hook 'eglot-ensure)
 #+end_src
 
 **** Ocaml specific config
@@ -441,6 +441,8 @@
       (add-hook 'caml-mode-hook 'merlin-mode t)
       ;; Use opam switch to lookup ocamlmerlin binary
       (setq merlin-command 'opam)))
+  (add-hook 'caml-mode-hook 'eglot-ensure)
+  (add-hook 'tuareg-mode-hook 'eglot-ensure)
 #+end_src
 
 *** Treesitter for better syntax highlighting

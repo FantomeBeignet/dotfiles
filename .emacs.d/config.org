@@ -426,16 +426,6 @@
     :after tree-sitter)
 #+end_src
 
-*** format-all for code formatting on save
-
-#+begin_src emacs-lisp
-  (use-package format-all
-    :after lsp-mode
-    :hook
-    (format-all-mode . format-all-ensure-formatter)
-    (lsp-mode . format-all-mode))
-#+end_src
-
 *** Projectile for projects management
 
 #+begin_src emacs-lisp

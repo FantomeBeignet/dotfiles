@@ -524,6 +524,13 @@
   (add-hook 'tuareg-mode-hook 'eglot-ensure)
 #+end_src
 
+**** Java
+
+#+begin_src emacs-lisp
+  (use-package lsp-java)
+  (add-hook 'java-mode-hook 'eglot-ensure)
+#+end_src
+
 *** Treesitter for better syntax highlighting
 
 #+begin_src emacs-lisp

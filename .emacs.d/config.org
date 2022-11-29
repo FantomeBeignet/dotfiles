@@ -431,6 +431,20 @@
     (all-the-icons-completion-mode))
 #+end_src
 
+*** Tempel for snippets
+
+#+begin_src emacs-lisp
+  (use-package tempel
+    :init
+    (defun tempel-setup-capf ()
+      (setq-local completion-at-point-functions
+		  (cons #'tempel-expand
+			completion-at-point-functions)))
+
+    (add-hook 'prog-mode-hook 'tempel-setup-capf)
+    (add-hook 'text-mode-hook 'tempel-setup-capf))
+#+end_src
+
 ** Programming
 
 *** Eglot for lsp feature

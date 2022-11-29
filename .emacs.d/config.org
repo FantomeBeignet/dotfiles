@@ -469,16 +469,27 @@
 **** Svelte
 
 #+begin_src emacs-lisp
-  (use-package web-mode)
+  (use-package web-mode
+    :init
+    (setq
+     web-mode-enable-auto-closing t
+     web-mode-enable-auto-opening t
+     web-mode-enable-auto-expanding t))
+
   (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+
   (add-to-list 'web-mode-content-types-alist '("svelte" . "\\.svelte\\'"))
+
   (defun my/svelte-mode-hook ()
     (setq web-mode-svelte-indent-offset 2))
+
   (add-hook 'web-mode-hook 'my/svelte-mode-hook)
+
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
 		 `(web-mode . ,(eglot-alternatives
 				'(("svelteserver" "--stdio"))))))
+
   (add-hook 'web-mode-hook 'eglot-ensure)
 #+end_src
 

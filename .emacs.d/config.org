@@ -451,6 +451,17 @@
     (global-tempel-abbrev-mode))
 #+end_src
 
+*** Cape for better capfs
+
+#+begin_src emacs-lisp
+  (use-package cape)
+
+  (defun my/eglot-tempel-capf ()
+    (setq-local completion-at-point-functions
+		(list (cape-super-capf
+		       #'tempel-complete
+		       #'eglot-completion-at-point))))
+  (add-hook #'eglot-managed-mode-hook #'my/eglot-tempel-capf)
 #+end_src
 
 ** Programming

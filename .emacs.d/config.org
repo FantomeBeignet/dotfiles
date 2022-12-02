@@ -435,14 +435,22 @@
 
 #+begin_src emacs-lisp
   (use-package tempel
+    :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+	   ("M-*" . tempel-insert))
     :init
     (defun tempel-setup-capf ()
-      (setq-local completion-at-point-functions
-		  (cons #'tempel-expand
+     (setq-local completion-at-point-functions
+		  (cons #'tempel-complete
 			completion-at-point-functions)))
 
     (add-hook 'prog-mode-hook 'tempel-setup-capf)
-    (add-hook 'text-mode-hook 'tempel-setup-capf))
+    (add-hook 'text-mode-hook 'tempel-setup-capf)
+    (add-hook 'org-mode-hook 'tempel-setup-capf)
+
+    (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
+    (global-tempel-abbrev-mode))
+#+end_src
+
 #+end_src
 
 ** Programming

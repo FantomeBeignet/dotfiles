@@ -602,6 +602,10 @@
     "gp" 'magit-pull
     "gl" 'magit-log-current
     "gf" 'magit-fetch)
+
+  (use-package magit-todos
+    :init
+    (magit-todos-mode))
 #+end_src
 
 *** diff-hl for highlighting changes in gutter

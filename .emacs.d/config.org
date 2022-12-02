@@ -357,7 +357,7 @@
 				(corfu-mode)))
     :init
     (setq corfu-auto t
-	  corfu-auto-prefix 2
+	  corfu-auto-prefix 1
 	  corfu-preselect-first t
 	  corfu-preview-current t
 	  corfu-quit-no-match 'separator

@@ -263,23 +263,10 @@
     (eshell-syntax-highlighting-global-mode 1))
 #+end_src
 
-** Auto bury compilation buffer when successful
+** Auto switch to compilation buffer
 
 #+begin_src emacs-lisp
-  (defun bury-compile-buffer-if-successful (buffer string)
-    "Bury a compilation buffer if succeeded without warnings "
-    (if (and
-	 (string-match "compilation" (buffer-name buffer))
-	 (string-match "finished" string)
-	 (not
-	  (with-current-buffer buffer
-	    (search-forward "warning" nil t))))
-	(run-with-timer 1 nil
-			(lambda (buf)
-			  (bury-buffer buf)
-			  (delete-window (get-buffer-window buf 'visible)))
-			buffer)))
-  (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+  (add-hook 'compilation-finish-functions 'switch-to-buffer-other-window 'compilation)
 #+end_src
 
 * Packages

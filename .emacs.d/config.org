@@ -528,6 +528,14 @@
       (setq merlin-command 'opam)))
   (add-hook 'caml-mode-hook 'eglot-ensure)
   (add-hook 'tuareg-mode-hook 'eglot-ensure)
+
+  (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+
+  (use-package dune)
+
+  (use-package tuareg
+    :init
+    (setq tuareg-match-patterns-aligned t))
 #+end_src
 
 **** Java

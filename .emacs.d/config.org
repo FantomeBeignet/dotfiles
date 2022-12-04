@@ -197,24 +197,24 @@
 
 #+begin_src emacs-lisp
   (use-package evil-lion
-    :hook
-    (evil-mode . evil-lion-mode))
+    :init
+    (evil-lion-mode))
 #+end_src
 
 ** Evil surround
 
 #+begin_src emacs-lisp
   (use-package evil-surround
-    :hook
-    (evil-mode . evil-surround-mode))
+    :init
+    (evil-surround-mode))
 #+end_src
 
 ** Evil commentary to comment blocks of code
 
 #+begin_src emacs-lisp
   (use-package evil-commentary
-    :hook
-    (evil-mode . evil-commentary-mode))
+    :init
+    (evil-commentary-mode))
 #+end_src
 
 * Configuration of default editor functionnalities

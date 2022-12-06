@@ -463,6 +463,10 @@
     (setq completion-category-defaults nil))
 
   (use-package consult-eglot)
+
+  (add-hook 'eglot-managed-mode-hook
+	    (lambda ()
+	      (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
 #+end_src
 
 *** Flycheck for syntax checking on the fly

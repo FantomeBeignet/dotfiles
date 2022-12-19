@@ -549,6 +549,12 @@
   (add-hook 'java-mode-hook 'eglot-ensure)
 #+end_src
 
+**** C
+
+#+begin_src emacs-lisp
+  (add-hook 'c-mode-hook 'eglot-ensure)
+#+end_src
+
 *** Treesitter for better syntax highlighting
 
 #+begin_src emacs-lisp

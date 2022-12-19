@@ -74,12 +74,21 @@
 
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil
-		      :font "SauceCodePro Nerd Font 14"
+		      :font "VictorMono Nerd Font 14"
 		      :weight 'medium)
   (set-face-attribute 'fixed-pitch nil
-		      :font "SauceCodePro Nerd Font 14"
+		      :font "VictorMono Nerd Font 14"
 		      :weight 'medium)
-  (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 14"))
+  (add-to-list 'default-frame-alist '(font . "VictorMono Nerd Font 14"))
+#+end_src
+
+** Ligatures
+
+#+begin_src emacs-lisp
+      (use-package ligature
+	:config
+	(ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>" "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-" "-|" "|->" "<-|" ">-|" "|-<" "|=" "|=>" ">-" "<-" "<--" "-->" "->" "-<" ">->" ">>-" "<<-" "<->" "->>" "-<<" "<-<" "==>" "=>" "=/=" "!==" "!=" "<==" ">>=" "=>>" ">=>" "<=>" "<=<" "=<=" "=>=" "<<=" "=<<" ".-" ".=" "=:=" "=!=" "==" "===" "::" ":=" ":>" ":<" ">:" "<:" ";;" "<|" "<|>" "|>" "<>" "<$" "<$>" "$>" "<+" "<+>" "+>" "?=" "/=" "/==" "/\\" "\\/" "__" "&&" "++" "+++"))
+	(global-ligature-mode t))
 #+end_src
 
 ** Theme (palenight from doom-themes)

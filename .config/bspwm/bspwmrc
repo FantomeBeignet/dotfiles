@@ -30,7 +30,7 @@ bspc config ignore_ewmh_focus true
 # Assign apps to workspaces
 bspc rule -a Alacritty desktop='^1' state=tiled follow=on focus=on
 bspc rule -a firefox desktop='^2' state=tiled follow=off focus=off
-bspc rule -a code-oss desktop='^3' state=tiled follow=off focus=off
+bspc rule -a Code desktop='^3' state=tiled follow=off focus=off
 bspc rule -a obsidian desktop='^4' state=tiled follow=off focus=off
 
 # Startup apps

@@ -257,6 +257,10 @@
     (setq all-the-icons-dired-monochrome nil)
     :hook
     (dired-mode . all-the-icons-dired-mode))
+
+  (use-package dired-collapse
+    :hook
+    (dired-mode . dired-collapse-mode))
 #+end_src
 
 ** Eshell

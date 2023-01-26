@@ -564,6 +564,12 @@
   (add-hook 'c-mode-hook 'eglot-ensure)
 #+end_src
 
+**** Flex and Bison
+
+#+begin_src emacs-lisp
+  (use-package bison-mode)
+#+end_src
+
 *** Treesitter for better syntax highlighting
 
 #+begin_src emacs-lisp

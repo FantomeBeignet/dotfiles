@@ -261,6 +261,20 @@
   (use-package dired-collapse
     :hook
     (dired-mode . dired-collapse-mode))
+
+  (use-package dired-rainbow
+    :config
+    (progn
+      (dired-rainbow-define-chmod directory "#82aaff" "d.*")
+      (dired-rainbow-define html "#ba5b60" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
+      (dired-rainbow-define document "#9a72b5" ("docm" "doc" "docx" "odb" "odt" "pdb" "pdf" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
+      (dired-rainbow-define markdown "#d1a658" ("org" "etx" "info" "markdown" "md" "mkd" "nfo" "pod" "rst" "tex" "textfile" "txt"))
+      ))
+
+  (use-package diredfl
+    :hook
+    (dired-mode . diredfl-mode))
+
 #+end_src
 
 ** Eshell

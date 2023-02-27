@@ -162,3 +162,6 @@ export PATH="$PNPM_HOME:$PATH"
 
 # Bat
 alias cat=bat
+
+# Man with syntax highlighting
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"

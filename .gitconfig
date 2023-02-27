@@ -1,0 +1,20 @@
+[alias]
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
+[safe]
+	directory = /opt/flutter
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+
+[delta]
+	features = decorations line-numbers
+	syntax-theme = base16
+
+[delta "decorations"]
+        file-style = bold ul magenta
+	file-decoration-style = none
+	hunk-header-style = blue bold
+	hunk-header-decoration-style = ul

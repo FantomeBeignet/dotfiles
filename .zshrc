@@ -159,3 +159,6 @@ export PATH="/home/tom/.local/bin:$PATH"
 export PNPM_HOME="/home/tom/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# Bat
+alias cat=bat

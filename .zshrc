@@ -152,3 +152,10 @@ eval $(thefuck --alias)
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+export PATH="/home/tom/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/tom/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

@@ -1,0 +1,28 @@
+layout {
+    default_tab_template {
+	children
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+
+    swap_tiled_layout name="Default layout" {
+        tab {
+	    pane split_direction="vertical" {
+	    	pane
+	        pane split_direction="horizontal" stacked=false {
+	       	    pane
+	       	    pane
+	        }
+	    }
+	}
+	tab min_panes=5 {
+	    pane split_direction="vertical" {
+	    	pane
+	    	pane stacked=true {
+		    children;
+	        }
+	    }
+	}
+    }
+}

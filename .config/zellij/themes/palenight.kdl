@@ -1,0 +1,13 @@
+palenight {
+    bg "#2E3440"
+    bg "#292D3E"
+    black "#292D3E"
+    red "#F07178"
+    green "#C3E88D"
+    yellow "#FFCB6B"
+    blue "#82AAFF"
+    magenta "#C792EA"
+    cyan "#89DDFF"
+    white "#D0D0D0"
+    orange "#F5A142"
+}

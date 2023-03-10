@@ -18,6 +18,8 @@ zmodule fzf
 zmodule pacman
 # Support for zoxide
 zmodule kiesman99/zim-zoxide
+# My personal exa aliases
+zmodule FantomeBeignet/zim-exa
 
 #
 # Completion

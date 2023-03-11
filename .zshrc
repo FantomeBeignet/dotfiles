@@ -180,3 +180,5 @@ help() {
 }
 
 eval "$(zellij setup --generate-auto-start zsh)"
+
+source /home/tom/.config/broot/launcher/bash/br

@@ -179,22 +179,20 @@ plugins {
 
 themes {
     default {
-        fg "#D0D0D0"
-        bg "#292D3E"
-        black "#292D3E"
-        red "#F07178"
-        green "#C3E88D"
-        yellow "#FFCB6B"
-        blue "#82AAFF"
-        magenta "#C792EA"
-        cyan "#89DDFF"
-        white "#D0D0D0"
-        orange "#F5A142"
+        fg 	"#e2e1ea"
+        bg 	"#33364e"
+        black 	"#33364e"
+        red 	"#d08092"
+        green 	"#99c7ab"
+        yellow 	"#dacd8b"
+        blue 	"#829cd3"
+        magenta "#b08cc5"
+        cyan 	"#74bed2"
+        white 	"#e2e1ea"
+        orange 	"#e5aa8a"
     }
 }
 
 theme "default"
 
 default_shell "zsh"
-
-scrollback_editor "/usr/bin/nvim"

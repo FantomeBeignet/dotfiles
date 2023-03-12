@@ -96,6 +96,11 @@ require('lazy').setup({
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
 
+  -- Auto pairs
+  {
+    'windwp/nvim-autopairs',
+  },
+
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -355,6 +360,9 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- [[ Configure autopairs ]]
+require('nvim-autopairs').setup({})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

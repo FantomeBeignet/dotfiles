@@ -309,21 +309,21 @@ vim.keymap.set('n', '<leader>ff', function()
   require('telescope.builtin').find_files({
     find_command = {'rg', '--files', '--color', 'never', '--iglob', '!.git', '--hidden'}
   })
-end, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags({ previewer = false }) end, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>fm', function() require('telescope').extensions.harpoon.marks({ layout_config = { height = 7 } }) end)
+end, { desc = '[F]ind [F]iles' })
+vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags({ previewer = false }) end, { desc = '[F]ind [H]elp' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set('n', '<leader>fm', function() require('telescope').extensions.harpoon.marks({ layout_config = { height = 7 } }) end, { desc = '[F]ind [M]arks'})
 
 -- [[ Configure Harpoon ]]
 local hm = require('harpoon.mark')
 local hui = require('harpoon.ui')
-vim.keymap.set('n', '<leader>ha', hm.add_file)
-vim.keymap.set('n', '<leader>hq', function () hui.nav_file(1) end)
-vim.keymap.set('n', '<leader>hw', function () hui.nav_file(2) end)
-vim.keymap.set('n', '<leader>he', function () hui.nav_file(3) end)
-vim.keymap.set('n', '<leader>hr', function () hui.nav_file(4) end)
+vim.keymap.set('n', '<leader>ha', hm.add_file, { desc = '[H]arpoon [A]dd' })
+vim.keymap.set('n', '<leader>hq', function () hui.nav_file(1) end, { desc = 'First Harpoon mark'})
+vim.keymap.set('n', '<leader>hw', function () hui.nav_file(2) end, { desc = 'Second Harpoon mark'})
+vim.keymap.set('n', '<leader>he', function () hui.nav_file(3) end, { desc = 'Third Harpoon mark'})
+vim.keymap.set('n', '<leader>hr', function () hui.nav_file(4) end, { desc = 'Fourth Harpoon mark'})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

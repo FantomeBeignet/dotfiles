@@ -277,6 +277,16 @@ require('telescope').setup {
     vimgrep_arguments = {
       'rg', '--hidden', '--iglob', '!.git', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
     },
+    layout_strategy = 'bottom_pane',
+    layout_config = {
+      prompt_position = "bottom",
+      height = 15,
+    },
+    borderchars = {
+      prompt  = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+      results = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+      preview = {' ', ' ', ' ', '│', '╷', ' ', ' ', '│'},
+    },
   },
 }
 
@@ -287,13 +297,7 @@ pcall(require('telescope').load_extension, 'harpoon')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>/', function() require('telescope.builtin').current_buffer_fuzzy_find({ previewer = false }) end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>ff', function()
   -- Show hidden files
@@ -301,11 +305,11 @@ vim.keymap.set('n', '<leader>ff', function()
     find_command = {'rg', '--files', '--color', 'never', '--iglob', '!.git', '--hidden'}
   })
 end, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags({ previewer = false }) end, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>fm', require('telescope').extensions.harpoon.marks)
+vim.keymap.set('n', '<leader>fm', function() require('telescope').extensions.harpoon.marks({ layout_config = { height = 7 } }) end)
 
 -- [[ Configure Harpoon ]]
 local hm = require('harpoon.mark')

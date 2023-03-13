@@ -184,6 +184,11 @@ require('lazy').setup({
     'onsails/lspkind.nvim',
   },
 
+  { -- NeoTree
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' }
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -569,6 +574,20 @@ cmp.setup.cmdline(':', {
     })
 })
 
+require("neo-tree").setup({
+  event_handlers = {
+    {
+      event = "file_opened",
+      handler = function(_)
+        require("neo-tree").close_all()
+      end
+    },
+  }
+})
+
+
+
+vim.keymap.set('n', '<leader>b', function() require("neo-tree.command").execute({ toggle = true }) end, { desc = 'Open file tree' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

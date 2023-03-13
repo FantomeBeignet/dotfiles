@@ -167,6 +167,10 @@ require('lazy').setup({
     end,
   },
 
+  -- Harpoon to quickly switch between buffers
+  {
+    'ThePrimeagen/harpoon'
+  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -278,6 +282,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'harpoon')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -300,6 +305,16 @@ vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>fm', require('telescope').extensions.harpoon.marks)
+
+-- [[ Configure Harpoon ]]
+local hm = require('harpoon.mark')
+local hui = require('harpoon.ui')
+vim.keymap.set('n', '<leader>ha', hm.add_file)
+vim.keymap.set('n', '<leader>hq', function () hui.nav_file(1) end)
+vim.keymap.set('n', '<leader>hw', function () hui.nav_file(2) end)
+vim.keymap.set('n', '<leader>he', function () hui.nav_file(3) end)
+vim.keymap.set('n', '<leader>hr', function () hui.nav_file(4) end)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

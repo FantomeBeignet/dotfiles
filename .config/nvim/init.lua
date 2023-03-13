@@ -516,7 +516,18 @@ cmp.setup {
     entries = {name = 'custom', selection_order = 'near_cursor'},
   },
   formatting = {
-    format = lspkind.cmp_format({}),
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "(buff)",
+        nvim_lsp = "(lsp)",
+        luasnip = "(snip)",
+        nvim_lua = "(lua)",
+      }),
+    }),
+  },
+  experimental = {
+    ghost_text = true,
   },
 }
 

@@ -187,6 +187,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
@@ -260,7 +261,6 @@ vim.o.termguicolors = true
 -- which-key group names
 
 require('which-key').register({
-  ['<leader><space>'] = { name = "File Browser" },
   ['<leader>c'] = { name = '+code' },
   ['<leader>f'] = { name = '+find' },
   ['<leader>h'] = { name = '+harpoon' },
@@ -323,7 +323,7 @@ pcall(require('telescope').load_extension, 'harpoon')
 pcall(require('telescope').load_extension, 'file_browser')
 
 --See `:help telescope.builtin`
-vim.keymap.set('n', '<leader><space>', require('telescope').extensions.file_browser.file_browser,
+vim.keymap.set('n', '<leader>b', require('telescope').extensions.file_browser.file_browser,
   { noremap = true, desc = 'Find recently opened files' })
 vim.keymap.set('n', '<leader>fF', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
@@ -361,10 +361,10 @@ vim.keymap.set('n', '<leader>fS',
 local hm = require('harpoon.mark')
 local hui = require('harpoon.ui')
 vim.keymap.set('n', '<leader>ha', hm.add_file, { desc = 'Harpoon Add' })
-vim.keymap.set('n', '<leader>hq', function() hui.nav_file(1) end, { desc = 'First Harpoon mark' })
-vim.keymap.set('n', '<leader>hw', function() hui.nav_file(2) end, { desc = 'Second Harpoon mark' })
-vim.keymap.set('n', '<leader>he', function() hui.nav_file(3) end, { desc = 'Third Harpoon mark' })
-vim.keymap.set('n', '<leader>hr', function() hui.nav_file(4) end, { desc = 'Fourth Harpoon mark' })
+vim.keymap.set('n', '<leader>hq', function() hui.nav_file(1) end, { desc = 'Mark 1' })
+vim.keymap.set('n', '<leader>hw', function() hui.nav_file(2) end, { desc = 'Mark 2' })
+vim.keymap.set('n', '<leader>he', function() hui.nav_file(3) end, { desc = 'Mark 3' })
+vim.keymap.set('n', '<leader>hr', function() hui.nav_file(4) end, { desc = 'Mark 4' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

@@ -35,7 +35,6 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -75,7 +74,8 @@ require('lazy').setup({
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
-  { -- LSP Configuration & Plugins
+  {
+    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -91,9 +91,11 @@ require('lazy').setup({
     },
   },
 
-  { -- Autocompletion
+  {
+    -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-path' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-path' },
   },
 
   -- Auto pairs
@@ -102,8 +104,9 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+  { 'folke/which-key.nvim',          opts = {} },
+  {
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
@@ -117,7 +120,8 @@ require('lazy').setup({
     },
   },
 
-  { -- Theme inspired by Atom
+  {
+    -- Theme inspired by Atom
     'folke/tokyonight.nvim',
     priority = 1000,
     config = function()
@@ -125,7 +129,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Set lualine as statusline
+  {
+    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
@@ -138,7 +143,8 @@ require('lazy').setup({
     },
   },
 
-  { -- Add indentation guides even on blank lines
+  {
+    -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
@@ -149,7 +155,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -167,11 +173,17 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+  },
+
   -- Harpoon to quickly switch between buffers
   {
     'ThePrimeagen/harpoon'
   },
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -182,11 +194,6 @@ require('lazy').setup({
   },
   {
     'onsails/lspkind.nvim',
-  },
-
-  { -- NeoTree
-    'nvim-neo-tree/neo-tree.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' }
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -253,11 +260,10 @@ vim.o.termguicolors = true
 -- which-key group names
 
 require('which-key').register({
+  ['<leader><space>'] = { name = "File Browser" },
   ['<leader>c'] = { name = '+code' },
   ['<leader>f'] = { name = '+find' },
-  ['<leader>fc'] = { name = '+calls' },
   ['<leader>h'] = { name = '+harpoon' },
-  ['<leader>s'] = { name = '+symbol' },
 })
 
 -- Keymaps for better default experience
@@ -290,7 +296,8 @@ require('telescope').setup {
       },
     },
     vimgrep_arguments = {
-      'rg', '--hidden', '--iglob', '!.git', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
+      'rg', '--hidden', '--iglob', '!.git', '--color=never', '--no-heading', '--with-filename', '--line-number',
+      '--column', '--smart-case'
     },
     layout_strategy = 'bottom_pane',
     layout_config = {
@@ -298,46 +305,66 @@ require('telescope').setup {
       height = 15,
     },
     borderchars = {
-      prompt  = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-      results = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-      preview = {' ', ' ', ' ', '│', '╷', ' ', ' ', '│'},
+      prompt  = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+      results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+      preview = { ' ', ' ', ' ', '│', '╷', ' ', ' ', '│' },
+    },
+  },
+  extensions = {
+    file_browser = {
+      theme = 'ivy',
     },
   },
 }
 
--- Enable telescope fzf native, if installed
+-- Enable extensions
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'harpoon')
+pcall(require('telescope').load_extension, 'file_browser')
 
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function() require('telescope.builtin').current_buffer_fuzzy_find({ previewer = false }) end, { desc = '[/] Fuzzily search in current buffer' })
+--See `:help telescope.builtin`
+vim.keymap.set('n', '<leader><space>', require('telescope').extensions.file_browser.file_browser,
+  { noremap = true, desc = 'Find recently opened files' })
+vim.keymap.set('n', '<leader>fF', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
+vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
+vim.keymap.set('n', '<leader>fg',
+  function() require('telescope.builtin').current_buffer_fuzzy_find({ previewer = false }) end,
+  { desc = 'Find in current buffer' })
 
 vim.keymap.set('n', '<leader>ff', function()
   -- Show hidden files
   require('telescope.builtin').find_files({
-    find_command = {'rg', '--files', '--color', 'never', '--iglob', '!.git', '--hidden'}
+    find_command = { 'rg', '--files', '--color', 'never', '--iglob', '!.git', '--hidden' }
   })
-end, { desc = '[F]ind [F]iles' })
-vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags({ previewer = false }) end, { desc = '[F]ind [H]elp' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
-vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>fm', function() require('telescope').extensions.harpoon.marks({ layout_config = { height = 7 } }) end, { desc = '[F]ind [M]arks'})
-vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references, { desc = '[F]ind [R]eferences' })
-vim.keymap.set('n', '<leader>fci', require('telescope.builtin').lsp_incoming_calls, { desc = '[F]ind [C]all ([I]ncoming)' })
-vim.keymap.set('n', '<leader>fco', require('telescope.builtin').lsp_outgoing_calls, { desc = '[F]ind [C]all ([O]utgoing)' })
-vim.keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_implementations, { desc = '[F]ind [I]mplementations' })
+end, { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags({ previewer = false }) end,
+  { desc = 'Find Help' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Find current Word' })
+vim.keymap.set('n', '<leader>fG', require('telescope.builtin').live_grep, { desc = 'Find by Grep' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Find Diagnostics' })
+vim.keymap.set('n', '<leader>fm',
+  function() require('telescope').extensions.harpoon.marks({ layout_config = { height = 7 } }) end,
+  { desc = 'Find Marks' })
+vim.keymap.set('n', '<leader>fr', require('telescope.builtin').lsp_references, { desc = 'Find References' })
+vim.keymap.set('n', '<leader>fc', require('telescope.builtin').lsp_incoming_calls,
+  { desc = 'Find Incoming Calls' })
+vim.keymap.set('n', '<leader>fC', require('telescope.builtin').lsp_outgoing_calls,
+  { desc = 'Find Outgoing Calls' })
+vim.keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_implementations, { desc = 'Find Implementations' })
+vim.keymap.set('n', '<leader>fs', function() require('telescope.builtin').lsp_document_symbols({ previewer = false }) end,
+  { desc = 'Find Document Symbols' })
+vim.keymap.set('n', '<leader>fS',
+  function() require('telescope.builtin').lsp_dynamic_workspace_symbols({ previewer = false }) end,
+  { desc = 'Find Workspace Symbols' })
 
 -- [[ Configure Harpoon ]]
 local hm = require('harpoon.mark')
 local hui = require('harpoon.ui')
-vim.keymap.set('n', '<leader>ha', hm.add_file, { desc = '[H]arpoon [A]dd' })
-vim.keymap.set('n', '<leader>hq', function () hui.nav_file(1) end, { desc = 'First Harpoon mark'})
-vim.keymap.set('n', '<leader>hw', function () hui.nav_file(2) end, { desc = 'Second Harpoon mark'})
-vim.keymap.set('n', '<leader>he', function () hui.nav_file(3) end, { desc = 'Third Harpoon mark'})
-vim.keymap.set('n', '<leader>hr', function () hui.nav_file(4) end, { desc = 'Fourth Harpoon mark'})
+vim.keymap.set('n', '<leader>ha', hm.add_file, { desc = 'Harpoon Add' })
+vim.keymap.set('n', '<leader>hq', function() hui.nav_file(1) end, { desc = 'First Harpoon mark' })
+vim.keymap.set('n', '<leader>hw', function() hui.nav_file(2) end, { desc = 'Second Harpoon mark' })
+vim.keymap.set('n', '<leader>he', function() hui.nav_file(3) end, { desc = 'Third Harpoon mark' })
+vim.keymap.set('n', '<leader>hr', function() hui.nav_file(4) end, { desc = 'Fourth Harpoon mark' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -429,32 +456,31 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>cr', vim.lsp.buf.rename, '[R]ename')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>cr', vim.lsp.buf.rename, 'Rename')
+  nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>cd', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>csd', require('telescope.builtin').lsp_document_symbols, '[S]ymbols ([D]ocument)')
-  nmap('<leader>csw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]ymbols ([W]orkspace)')
+  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
+  nmap('<leader>cd', vim.lsp.buf.type_definition, 'Type Definition')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>cwa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>cwr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+  nmap('<leader>cwa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
+  nmap('<leader>cwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   nmap('<leader>cwl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, 'List Workspace Folders')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+  nmap('<leader>cf', function() vim.lsp.buf.format() end, 'Format buffer')
 end
 
 -- Enable the following language servers
@@ -550,7 +576,7 @@ cmp.setup {
     { name = 'buffer' },
   },
   view = {
-    entries = {name = 'custom', selection_order = 'near_cursor'},
+    entries = { name = 'custom', selection_order = 'near_cursor' },
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -582,24 +608,9 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-      { name = 'cmdline' }
-    })
+    { name = 'cmdline' }
+  })
 })
-
-require("neo-tree").setup({
-  event_handlers = {
-    {
-      event = "file_opened",
-      handler = function(_)
-        require("neo-tree").close_all()
-      end
-    },
-  }
-})
-
-
-
-vim.keymap.set('n', '<leader>b', function() require("neo-tree.command").execute({ toggle = true }) end, { desc = 'Open file tree' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

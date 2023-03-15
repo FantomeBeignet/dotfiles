@@ -197,6 +197,10 @@ require('lazy').setup({
     'onsails/lspkind.nvim',
   },
 
+  {
+    'folke/zen-mode.nvim', dependencies = { 'folke/twilight.nvim' }
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -612,5 +616,7 @@ cmp.setup.cmdline(':', {
   })
 })
 
+require('zen-mode').setup({})
+vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle Zen mode' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -121,22 +121,12 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'tokyonight'
-    end,
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
@@ -188,6 +178,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'nvim-treesitter/nvim-treesitter-context',
+      'nvim-treesitter/playground',
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
@@ -215,6 +206,10 @@ require('lazy').setup({
   --
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
+  {
+    'FantomeBeignet/ghostly.nvim',
+  },
+
   { import = 'custom.plugins' },
 }, {})
 
@@ -259,6 +254,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.api.nvim_command('colorscheme ghostly')
 
 -- [[ Basic Keymaps ]]
 

@@ -181,7 +181,7 @@ themes {
     default {
         fg 	"#e2e1ea"
         bg 	"#33364e"
-        black 	"#33364e"
+        black 	"#201a28"
         red 	"#d08092"
         green 	"#99c7ab"
         yellow 	"#dacd8b"

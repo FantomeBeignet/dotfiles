@@ -210,6 +210,15 @@ require('lazy').setup({
     'FantomeBeignet/ghostly.nvim',
   },
 
+  {
+    'ggandor/leap.nvim',
+    dependencies = {
+      'tpope/vim-repeat',
+      'ggandor/flit.nvim',
+      'ggandor/leap-spooky.nvim',
+    },
+  },
+
   { import = 'custom.plugins' },
 }, {})
 
@@ -615,5 +624,10 @@ cmp.setup.cmdline(':', {
 
 require('zen-mode').setup({})
 vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle Zen mode' })
+
+require('leap').add_default_mappings()
+require('flit').setup()
+require('leap-spooky').setup()
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

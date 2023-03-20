@@ -551,7 +551,12 @@ cmp.setup.cmdline(':', {
 require('zen-mode').setup({})
 vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle Zen mode' })
 
+-- Leap Setup
 require('leap').add_default_mappings()
 vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
+vim.keymap.set('n', '<leader>l', function ()
+  local current_window = vim.fn.win_getid()
+  require('leap').leap { target_windows = { current_window } }
+end, { desc = 'Leap' })
 require('flit').setup()
 require('leap-spooky').setup()

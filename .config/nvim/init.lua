@@ -552,5 +552,6 @@ require('zen-mode').setup({})
 vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle Zen mode' })
 
 require('leap').add_default_mappings()
+vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 require('flit').setup()
 require('leap-spooky').setup()

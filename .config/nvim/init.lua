@@ -57,7 +57,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -144,16 +144,19 @@ require('lazy').setup({
   },
 
   {
-    'FantomeBeignet/ghostly.nvim',
-  },
-
-  {
     'ggandor/leap.nvim',
     dependencies = {
       'tpope/vim-repeat',
       'ggandor/flit.nvim',
       'ggandor/leap-spooky.nvim',
     },
+  },
+
+  {
+    'FantomeBeignet/ghostly.nvim',
+    config = function()
+      vim.api.nvim_command('colorscheme ghostly')
+    end,
   },
 
   { import = 'custom.plugins' },
@@ -200,8 +203,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
-vim.api.nvim_command('colorscheme ghostly')
 
 -- [[ Basic Keymaps ]]
 
@@ -554,7 +555,7 @@ vim.keymap.set('n', '<leader>z', require('zen-mode').toggle, { desc = 'Toggle Ze
 -- Leap Setup
 require('leap').add_default_mappings()
 vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
-vim.keymap.set('n', '<leader>l', function ()
+vim.keymap.set('n', '<leader>l', function()
   local current_window = vim.fn.win_getid()
   require('leap').leap { target_windows = { current_window } }
 end, { desc = 'Leap' })

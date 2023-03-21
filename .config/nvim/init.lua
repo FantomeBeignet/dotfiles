@@ -153,6 +153,18 @@ require('lazy').setup({
   },
 
   {
+    'yamatsum/nvim-cursorline',
+    opts = {
+      cursorline = {
+        timeout = 3000,
+      },
+      cursorword = {
+        enable = false,
+      },
+    },
+  },
+
+  {
     'FantomeBeignet/ghostly.nvim',
     config = function()
       vim.api.nvim_command('colorscheme ghostly')

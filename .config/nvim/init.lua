@@ -165,6 +165,10 @@ require('lazy').setup({
   },
 
   {
+    'jghauser/mkdir.nvim',
+  },
+
+  {
     'FantomeBeignet/ghostly.nvim',
     config = function()
       vim.api.nvim_command('colorscheme ghostly')

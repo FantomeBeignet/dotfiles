@@ -135,6 +135,12 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
+
+  {
+    'm-demare/hlargs.nvim',
+    opts = {},
+  },
+
   {
     'onsails/lspkind.nvim',
   },

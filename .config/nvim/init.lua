@@ -531,8 +531,13 @@ cmp.setup {
   },
   sources = {
     { name = 'luasnip' },
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    {
+      name = 'nvim_lsp',
+      keyword_length = 3,
+      entry_filter = function(entry, _)
+        return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+      end
+    },
   },
   view = {
     entries = { name = 'custom', selection_order = 'near_cursor' },
@@ -548,10 +553,13 @@ cmp.setup {
       }),
     }),
   },
-  experimental = {
-    ghost_text = true,
-  },
 }
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -567,7 +575,7 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-    { name = 'cmdline' }
+    { name = 'cmdline', keyword_length = 3 }
   })
 })
 

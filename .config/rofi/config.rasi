@@ -1,6 +1,9 @@
 configuration {
-	modi: "window,run,ssh,combi,filebrowser,drun";
-	combi-modi: "run,filebrowser";
+	modi:                "drun,run";
+    	show-icons:          true;
+    	display-drun:        "  Apps";
+    	display-run: 	     "  Run";
+	drun-display-format: "{name}";
 }
 
 @import "theme.rasi"

@@ -201,4 +201,12 @@ bar {
 default_border none
 gaps inner 10
 
+# Workspace bindings
+assign [app_id="alacritty"] workspace 1
+assign [app_id="firefox"] workspace 2
+
+# Autostarts
+exec alacritty
+exec firefox
+
 include /etc/sway/config.d/*

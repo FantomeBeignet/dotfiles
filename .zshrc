@@ -178,5 +178,3 @@ alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
-
-eval "$(zellij setup --generate-auto-start zsh)"

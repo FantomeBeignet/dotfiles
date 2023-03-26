@@ -162,9 +162,9 @@ input "type:keyboard" {
 
     bindsym XF86MonBrightnessUp exec 'brightnessctl -c backlight set +5%'
     bindsym XF86MonBrightnessDown exec 'brightnessctl -c backlight set 5%-'
-    bindsym XF86AudioRaiseVolume exec 'amixer -D pulse sset Master 5%+ unmute'
-    bindsym XF86AudioLowerVolume exec 'amixer -D pulse sset Master 5%- unmute'
-    bindsym XF86AudioMute exec 'amixer -D pulse set Master 1+ toggle'
+    bindsym XF86AudioRaiseVolume exec 'pamixer -i 5'
+    bindsym XF86AudioLowerVolume exec 'pamixer -d 5'
+    bindsym XF86AudioMute exec 'pamixer -t'
 #
 # Resizing containers:
 #

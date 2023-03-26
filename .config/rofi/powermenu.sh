@@ -14,8 +14,8 @@ dir="$HOME/.config/rofi"
 theme='powermenu'
 
 # CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+uptime="$(uptime -p | sed -e 's/up //g')"
+host="$(whoami)@$(hostname)"
 
 # Options
 shutdown='  Shutdown'

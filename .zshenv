@@ -1,3 +1,2 @@
-. "$HOME/.cargo/env"
-export EDITOR="/usr/bin/nvim"
-export MOZ_ENABLE_WAYLAND=1
+ZDOTDIR="$HOME/.config/zsh"
+source -- "$ZDOTDIR/.zshenv"

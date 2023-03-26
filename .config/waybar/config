@@ -8,7 +8,7 @@
         "max-length": 50
     },
     "network": {
-   	"interface": "wlan0",
+   	"interface": "wlo1",
     	"format": "{ifname}",
     	"format-wifi": "{essid}  ",
     	"format-ethernet": "{ipaddr}/{cidr} ",

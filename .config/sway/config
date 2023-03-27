@@ -71,6 +71,9 @@ input "type:keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec '~/.config/rofi/powermenu.sh'
+
+    # Take a screenshot
+    bindsym $mod+Shift+p exec '~/.config/rofi/rofi-grimshot.sh'
 #
 # Moving around:
 #

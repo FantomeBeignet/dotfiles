@@ -44,6 +44,9 @@ input "type:keyboard" {
     xkb_layout us
     xkb_variant intl
     xkb_options caps:swapescape,altwin:alt_win
+
+    repeat_rate 50
+    repeat_delay 250
 }
 
 ### Key bindings

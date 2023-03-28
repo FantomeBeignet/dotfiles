@@ -175,6 +175,24 @@ require('lazy').setup({
   },
 
   {
+    'petertriho/nvim-scrollbar',
+    opts = {
+      handle = {
+        blend = 10,
+      },
+    },
+  },
+
+  {
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+    require("scrollbar.handlers.search").setup({
+        -- hlslens config overrides
+    })
+  end,
+  },
+
+  {
     'FantomeBeignet/ghostly.nvim',
     config = function()
       vim.api.nvim_command('colorscheme ghostly')

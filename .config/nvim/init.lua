@@ -48,7 +48,7 @@ require('lazy').setup({
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-path' },
+      'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-path', 'hrsh7th/cmp-nvim-lsp-signature-help' },
   },
 
   -- Auto pairs
@@ -551,11 +551,12 @@ cmp.setup {
     { name = 'luasnip' },
     {
       name = 'nvim_lsp',
-      keyword_length = 3,
+      keyword_length = 2,
       entry_filter = function(entry, _)
         return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
       end
     },
+    { name = 'nvim_lsp_signature_help' },
   },
   view = {
     entries = { name = 'custom', selection_order = 'near_cursor' },

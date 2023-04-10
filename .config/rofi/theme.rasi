@@ -24,7 +24,7 @@
     alternate-urgent-foreground: var(background);
     alternate-active-background: var(active);
     alternate-active-foreground: var(background);
-    font: "VictorMono Nerd Font 14";
+    font: "Dank Mono 15";
 }
 
 /*****----- Main Window -----*****/

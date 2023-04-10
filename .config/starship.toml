@@ -8,7 +8,7 @@ error_symbol = "[✘ >](bold red)"
 
 # Username display
 [username]
-style_user = "cyan bold italic"
+style_user = "blue bold italic"
 format = '[$user]($style)'
 disabled = false
 show_always = true

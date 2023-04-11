@@ -72,6 +72,14 @@ config.colors = {
 -- Tab bar
 config.enable_tab_bar = false
 
+-- Window padding
+config.window_padding = {
+  left = '1cell',
+  right = '1cell',
+  top = '0.25cell',
+  bottom = '0.25cell',
+}
+
 -- Start tmux by default
 config.default_prog = {
   '/sbin/zsh',

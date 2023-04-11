@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -208,11 +208,11 @@ default_border none
 gaps inner 10
 
 # Workspace bindings
-assign [app_id="alacritty"] workspace 1
+assign [app_id="wezterm"] workspace 1
 assign [app_id="firefox"] workspace 2
 
 # Autostarts
-exec alacritty
+exec wezterm
 exec firefox
 
 include /etc/sway/config.d/*

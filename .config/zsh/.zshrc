@@ -153,7 +153,7 @@ function activate() {
 }
 
 # opam configuration
-test -r /home/tom/.opam/opam-init/init.zsh && . /home/tom/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r /home/tom/software/opam/opam-init/init.zsh && . /home/tom/software/opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # Starship prompt
 eval "$(starship init zsh)"

@@ -220,7 +220,7 @@ require('lazy').setup({
         end,
       })
 
-      vim.opt.sessionoptions:append("localoptions")       -- Save localoptions to session file
+      vim.opt.sessionoptions:append("localoptions") -- Save localoptions to session file
     end
   },
 
@@ -642,3 +642,6 @@ vim.keymap.set('n', '<leader>l', function()
 end, { desc = 'Leap' })
 require('flit').setup()
 require('leap-spooky').setup()
+
+-- Diagnostic keymapping
+vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Open floating diagnostic' })

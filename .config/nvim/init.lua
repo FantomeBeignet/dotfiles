@@ -458,6 +458,7 @@ require('nvim-autopairs').setup({})
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Open floating diagnostic' })
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -538,6 +539,9 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- Additional LSP keymaps
+vim.keymap.set('n', '<leader>ch', function() vim.lsp.buf.hover() end, { desc = 'Help for symbol' })
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -642,6 +646,3 @@ vim.keymap.set('n', '<leader>l', function()
 end, { desc = 'Leap' })
 require('flit').setup()
 require('leap-spooky').setup()
-
--- Diagnostic keymapping
-vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float() end, { desc = 'Open floating diagnostic' })

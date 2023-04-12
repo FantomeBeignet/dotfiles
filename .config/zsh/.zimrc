@@ -20,6 +20,8 @@ zmodule pacman
 zmodule kiesman99/zim-zoxide
 # My personal exa aliases
 zmodule FantomeBeignet/zim-exa
+# zsh vi mode
+zmodule jeffreytse/zsh-vi-mode
 
 #
 # Completion

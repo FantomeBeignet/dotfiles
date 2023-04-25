@@ -318,6 +318,10 @@ require('lazy').setup({
   },
 
   {
+    'christoomey/vim-tmux-navigator',
+  },
+
+  {
     'FantomeBeignet/ghostly.nvim',
     config = function()
       vim.api.nvim_command('colorscheme ghostly')
@@ -739,3 +743,9 @@ vim.keymap.set('n', '<leader>l', function()
 end, { desc = 'Leap' })
 require('flit').setup()
 require('leap-spooky').setup()
+
+-- Vim Tmux navigator setup 
+vim.keymap.set('n','<ctrl>h', '<cmd>TmuxNavigateLeft<cr>', { desc = "Left Tmux window" })
+vim.keymap.set('n','<ctrl>j', '<cmd>TmuxNavigateDown<cr>', { desc = "Down Tmux window" })
+vim.keymap.set('n','<ctrl>k', '<cmd>TmuxNavigateUp<cr>', { desc = "Up Tmux window" })
+vim.keymap.set('n','<ctrl>l', '<cmd>TmuxNavigateRight<cr>', { desc = "Right Tmux window" })

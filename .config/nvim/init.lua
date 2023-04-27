@@ -322,6 +322,11 @@ require('lazy').setup({
   },
 
   {
+    'akinsho/flutter-tools.nvim',
+    opts = {},
+  },
+
+  {
     'FantomeBeignet/ghostly.nvim',
     config = function()
       vim.api.nvim_command('colorscheme ghostly')

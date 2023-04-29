@@ -446,7 +446,7 @@ pcall(require('telescope').load_extension, 'file_browser')
 
 --See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>b', require('telescope').extensions.file_browser.file_browser,
-  { noremap = true, desc = 'Find recently opened files' })
+  { noremap = true, desc = 'Open file browser' })
 vim.keymap.set('n', '<leader>fF', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
 vim.keymap.set('n', '<leader>fg',
@@ -555,7 +555,43 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- [[ Configure autopairs ]]
-require('nvim-autopairs').setup({})
+require('nvim-autopairs').setup({
+  enable_check_bracket_line = true,
+})
+
+local npairs = require('nvim-autopairs')
+local Rule = require('nvim-autopairs.rule')
+local cond = require('nvim-autopairs.conds')
+npairs.get_rule("`").not_filetypes = { 'ocaml', }
+npairs.add_rule(
+  Rule('=', '')
+    :with_pair(cond.not_inside_quote())
+    :with_pair(function(opts)
+      local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
+      if last_char:match('[%w%=%s]') then
+        return true
+      end
+      return false
+    end)
+    :replace_endpair(function(opts)
+      local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
+      local next_char = opts.line:sub(opts.col, opts.col)
+      next_char = next_char == ' ' and '' or ' '
+      if prev_2char:match('%w$') then
+        return '<bs> =' .. next_char
+      end
+      if prev_2char:match('%=$') then
+        return next_char
+      end
+      if prev_2char:match('=') then
+        return '<bs><bs>=' .. next_char
+      end
+      return ''
+    end)
+    :set_end_pair_length(0)
+    :with_move(cond.none())
+    :with_del(cond.none())
+)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

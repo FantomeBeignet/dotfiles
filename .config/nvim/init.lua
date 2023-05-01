@@ -421,21 +421,6 @@ require('telescope').setup {
       'rg', '--hidden', '--iglob', '!.git', '--color=never', '--no-heading', '--with-filename', '--line-number',
       '--column', '--smart-case'
     },
-    layout_strategy = 'bottom_pane',
-    layout_config = {
-      prompt_position = "bottom",
-      height = 15,
-    },
-    borderchars = {
-      prompt  = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-      results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-      preview = { ' ', ' ', ' ', '│', '╷', ' ', ' ', '│' },
-    },
-  },
-  extensions = {
-    file_browser = {
-      theme = 'ivy',
-    },
   },
 }
 

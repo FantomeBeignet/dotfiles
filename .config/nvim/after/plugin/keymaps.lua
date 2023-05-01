@@ -46,6 +46,7 @@ vim.keymap.set('n', '<leader>fs', function() require('telescope.builtin').lsp_do
 vim.keymap.set('n', '<leader>fS',
   function() require('telescope.builtin').lsp_dynamic_workspace_symbols({ previewer = false }) end,
   { desc = 'Find Workspace Symbols' })
+vim.keymap.set('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = "Find Todos"})
 
 -- [[ Configure Harpoon ]]
 local hm = require('harpoon.mark')

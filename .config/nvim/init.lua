@@ -227,7 +227,7 @@ require('lazy').setup({
   {
     'willothy/nvim-cokeline',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
+    config = function()
       local get_hex = require('cokeline.utils').get_hex
       local normal_fg = get_hex('Normal', 'fg')
       local comments_fg = get_hex('Comment', 'fg')
@@ -250,10 +250,10 @@ require('lazy').setup({
           truncation = { priority = 1 }
         },
         devicon = {
-          text = function (buffer)
+          text = function(buffer)
             return buffer.devicon.icon
           end,
-          fg = function (buffer)
+          fg = function(buffer)
             return buffer.devicon.color
           end,
           truncation = { priority = 1 },
@@ -270,15 +270,15 @@ require('lazy').setup({
         diagnostics = {
           text = function(buffer)
             return
-              (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
-              or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
-              or ''
+                (buffer.diagnostics.errors ~= 0 and '  ' .. buffer.diagnostics.errors)
+                or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
+                or ''
           end,
           fg = function(buffer)
             return
-              (buffer.diagnostics.errors ~= 0 and errors_fg)
-              or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-              or nil
+                (buffer.diagnostics.errors ~= 0 and errors_fg)
+                or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+                or nil
           end,
           truncation = { priority = 1 },
         },
@@ -296,9 +296,9 @@ require('lazy').setup({
         default_hl = {
           fg = function(buffer)
             return
-              buffer.is_focused
-              and normal_fg
-              or comments_fg
+                buffer.is_focused
+                and normal_fg
+                or comments_fg
           end,
           bg = background_bg,
         },
@@ -565,32 +565,32 @@ local cond = require('nvim-autopairs.conds')
 npairs.get_rule("`").not_filetypes = { 'ocaml', }
 npairs.add_rule(
   Rule('=', '')
-    :with_pair(cond.not_inside_quote())
-    :with_pair(function(opts)
-      local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
-      if last_char:match('[%w%=%s]') then
-        return true
-      end
-      return false
-    end)
-    :replace_endpair(function(opts)
-      local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
-      local next_char = opts.line:sub(opts.col, opts.col)
-      next_char = next_char == ' ' and '' or ' '
-      if prev_2char:match('%w$') then
-        return '<bs> =' .. next_char
-      end
-      if prev_2char:match('%=$') then
-        return next_char
-      end
-      if prev_2char:match('=') then
-        return '<bs><bs>=' .. next_char
-      end
-      return ''
-    end)
-    :set_end_pair_length(0)
-    :with_move(cond.none())
-    :with_del(cond.none())
+  :with_pair(cond.not_inside_quote())
+  :with_pair(function(opts)
+    local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
+    if last_char:match('[%w%=%s]') then
+      return true
+    end
+    return false
+  end)
+  :replace_endpair(function(opts)
+    local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
+    local next_char = opts.line:sub(opts.col, opts.col)
+    next_char = next_char == ' ' and '' or ' '
+    if prev_2char:match('%w$') then
+      return '<bs> =' .. next_char
+    end
+    if prev_2char:match('%=$') then
+      return next_char
+    end
+    if prev_2char:match('=') then
+      return '<bs><bs>=' .. next_char
+    end
+    return ''
+  end)
+  :set_end_pair_length(0)
+  :with_move(cond.none())
+  :with_del(cond.none())
 )
 
 -- Diagnostic keymaps
@@ -781,8 +781,18 @@ end, { desc = 'Leap' })
 require('flit').setup()
 require('leap-spooky').setup()
 
--- Vim Tmux navigator setup 
-vim.keymap.set('n','<ctrl>h', '<cmd>TmuxNavigateLeft<cr>', { desc = "Left Tmux window" })
-vim.keymap.set('n','<ctrl>j', '<cmd>TmuxNavigateDown<cr>', { desc = "Down Tmux window" })
-vim.keymap.set('n','<ctrl>k', '<cmd>TmuxNavigateUp<cr>', { desc = "Up Tmux window" })
-vim.keymap.set('n','<ctrl>l', '<cmd>TmuxNavigateRight<cr>', { desc = "Right Tmux window" })
+-- Vim Tmux navigator setup
+vim.keymap.set('n', '<ctrl>h', '<cmd>TmuxNavigateLeft<cr>', { desc = "Left Tmux window" })
+vim.keymap.set('n', '<ctrl>j', '<cmd>TmuxNavigateDown<cr>', { desc = "Down Tmux window" })
+vim.keymap.set('n', '<ctrl>k', '<cmd>TmuxNavigateUp<cr>', { desc = "Up Tmux window" })
+vim.keymap.set('n', '<ctrl>l', '<cmd>TmuxNavigateRight<cr>', { desc = "Right Tmux window" })
+
+-- Autoformatting
+local af_augroup = vim.api.nvim_create_augroup("Autoformatting", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "lua", "go", "rust", "java", "ocaml", "c", "cpp", "make", "typescript", "javascript", "svelte", "astro", "sh" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = af_augroup,
+})

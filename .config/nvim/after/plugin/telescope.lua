@@ -10,6 +10,11 @@ require('telescope').setup {
       'rg', '--hidden', '--iglob', '!.git', '--color=never', '--no-heading', '--with-filename', '--line-number',
       '--column', '--smart-case'
     },
+    borderchars = {
+      prompt  = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+      results = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+      preview = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+    }
   },
 }
 

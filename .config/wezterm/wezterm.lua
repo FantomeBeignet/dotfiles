@@ -24,20 +24,20 @@ config.colors = {
   -- The default text color
   foreground = '#e2e1ea',
   -- The default background color
-  background = '#2d2b40',
+  background = '#2d2b44',
 
   -- Overrides the cell background color when the current cell is occupied by the
   -- cursor and the cursor style is set to Block
   cursor_bg = '#99c7ab',
   -- Overrides the text color when the current cell is occupied by the cursor
-  cursor_fg = '#2d2b40',
+  cursor_fg = '#2d2b44',
   -- Specifies the border color of the cursor when the cursor style is set to Block,
   -- or the color of the vertical or horizontal bar when the cursor style is set to
   -- Bar or Underline.
   cursor_border = '#99c7ab',
 
   -- the foreground color of selected text
-  selection_fg = '2d2b40',
+  selection_fg = '2d2b44',
   -- the background color of selected text
   selection_bg = '#e2e1ea',
 
@@ -51,7 +51,7 @@ config.colors = {
     '#201a28',
     '#d08092',
     '#99c7ab',
-    '#dacd8b',
+    '#e5aa8a',
     '#98aedd',
     '#b08cc5',
     '#80bfd1',
@@ -61,7 +61,7 @@ config.colors = {
     '#3e3e4c',
     '#d897a5',
     '#a6ceb5',
-    '#ff9e64',
+    '#dacd8b',
     '#7da6ff',
     '#c28ecd',
     '#0db9d7',

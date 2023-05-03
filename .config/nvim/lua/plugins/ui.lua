@@ -35,18 +35,6 @@ return {
 	{ 'numToStr/Comment.nvim', opts = {} },
 
 	{
-		'yamatsum/nvim-cursorline',
-		opts = {
-			cursorline = {
-				timeout = 3000,
-			},
-			cursorword = {
-				enable = false,
-			},
-		},
-	},
-
-	{
 		'petertriho/nvim-scrollbar',
 		opts = {
 			handle = {

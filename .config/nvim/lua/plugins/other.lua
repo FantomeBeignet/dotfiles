@@ -1,11 +1,20 @@
 return {
 
-	'tpope/vim-fugitive',
-	'tpope/vim-rhubarb',
+	{
+		'tpope/vim-fugitive',
+	},
 
-	'tpope/vim-sleuth',
+	{
+		'tpope/vim-rhubarb',
+	},
 
-	{ 'folke/which-key.nvim', opts = {} },
+	{
+		'tpope/vim-sleuth',
+	},
+
+	{
+		'folke/which-key.nvim', opts = {}
+	},
 
 
 	{
@@ -21,4 +30,5 @@ return {
 		'akinsho/flutter-tools.nvim',
 		opts = {},
 	},
+
 }

@@ -24,7 +24,7 @@ config.colors = {
   -- The default text color
   foreground = '#e2e1ea',
   -- The default background color
-  background = '#2d2b44',
+  background = '#2b2b40',
 
   -- Overrides the cell background color when the current cell is occupied by the
   -- cursor and the cursor style is set to Block

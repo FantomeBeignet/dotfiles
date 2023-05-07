@@ -1,19 +1,23 @@
 return {
 
 	{
-		'neovim/nvim-lspconfig',
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			'williamboman/mason.nvim',
-			'williamboman/mason-lspconfig.nvim',
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
-			{ 'j-hui/fidget.nvim', opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} },
 
-			'folke/neodev.nvim',
+			"folke/neodev.nvim",
 		},
 	},
 
 	{
-		'onsails/lspkind.nvim',
+		"onsails/lspkind.nvim",
 	},
 
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 }

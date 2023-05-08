@@ -46,11 +46,14 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
-	-- clangd = {},
-	-- gopls = {},
-	-- pyright = {},
-	-- rust_analyzer = {},
-	-- tsserver = {},
+	clangd = {},
+	gopls = {},
+	rust_analyzer = {},
+	tsserver = {},
+	ocamllsp = {},
+	pylsp = {},
+	pyright = {},
+	ruff_lsp = {},
 
 	lua_ls = {
 		Lua = {
@@ -59,6 +62,19 @@ local servers = {
 		},
 	},
 }
+
+local lspconfig = require('lspconfig')
+lspconfig.gopls.setup({
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+				nilness = true,
+				unusedwrite = true,
+			}
+		}
+	}
+})
 
 -- Setup neovim lua configuration
 require("neodev").setup()
@@ -91,30 +107,3 @@ mason_lspconfig.setup_handlers({
 vim.keymap.set("n", "<leader>ch", function()
 	vim.lsp.buf.hover()
 end, { desc = "Help for symbol" })
-
-local null_ls = require("null-ls")
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.formatting.dart_format,
-		null_ls.builtins.formatting.gofumpt,
-		null_ls.builtins.formatting.ocamlformat,
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.ruff,
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.stylua,
-	},
-	on_attach = function(client, bufnr)
-		-- Enable formatting on sync
-		if client.supports_method("textDocument/formatting") then
-			local format_on_save = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = format_on_save,
-				buffer = bufnr,
-				callback = function()
-					format_buffer(bufnr)
-				end,
-			})
-		end
-	end,
-})

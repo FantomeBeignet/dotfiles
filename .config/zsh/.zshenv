@@ -15,6 +15,7 @@ export CARGO_HOME="$HOME/software/cargo"
 
 # Go
 export GOPATH="$HOME/software/go"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Opam / OCaml
 export OPAMROOT="$HOME/software/opam"

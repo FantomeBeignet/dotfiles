@@ -21,6 +21,7 @@ null_ls.setup({
 		formatters.prettierd,
 		formatters.ruff,
 		formatters.rustfmt,
+		formatters.stylua,
 	},
 	on_attach = function(client, bufnr)
 		-- Enable formatting on sync

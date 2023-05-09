@@ -1,34 +1,34 @@
 return {
 
 	{
-		'tpope/vim-fugitive',
+		"tpope/vim-fugitive",
 	},
 
 	{
-		'tpope/vim-rhubarb',
+		"tpope/vim-rhubarb",
 	},
 
 	{
-		'tpope/vim-sleuth',
-	},
-
-	{
-		'folke/which-key.nvim', opts = {}
-	},
-
-
-	{
-		'folke/zen-mode.nvim', dependencies = { 'folke/twilight.nvim' }
-	},
-
-
-	{
-		'jghauser/mkdir.nvim',
-	},
-
-	{
-		'akinsho/flutter-tools.nvim',
+		"nmac427/guess-indent.nvim",
 		opts = {},
 	},
 
+	{
+		"folke/which-key.nvim",
+		opts = {},
+	},
+
+	{
+		"folke/zen-mode.nvim",
+		dependencies = { "folke/twilight.nvim" },
+	},
+
+	{
+		"jghauser/mkdir.nvim",
+	},
+
+	{
+		"akinsho/flutter-tools.nvim",
+		opts = {},
+	},
 }

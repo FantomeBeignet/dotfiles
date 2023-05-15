@@ -63,7 +63,7 @@ local servers = {
 	},
 }
 
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 lspconfig.gopls.setup({
 	settings = {
 		gopls = {
@@ -71,9 +71,9 @@ lspconfig.gopls.setup({
 				unusedparams = true,
 				nilness = true,
 				unusedwrite = true,
-			}
-		}
-	}
+			},
+		},
+	},
 })
 
 -- Setup neovim lua configuration
@@ -82,6 +82,10 @@ require("neodev").setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities.offsetEncoding = "utf-8"
+lspconfig.clangd.setup({
+	capabilities = capabilities,
+})
 
 -- Setup mason so it can manage external tooling
 require("mason").setup()

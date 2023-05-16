@@ -97,3 +97,7 @@ vim.keymap.set("n", "<ctrl>l", "<cmd>TmuxNavigateRight<cr>", { desc = "Right Tmu
 
 require("zen-mode").setup({})
 vim.keymap.set("n", "<leader>z", require("zen-mode").toggle, { desc = "Toggle Zen mode" })
+
+-- Splits
+vim.keymap.set("n", "<leader><Bslash>", "<cmd>vsp<cr>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>-", "<cmd>sp<cr>", { desc = "Horizontal split" })

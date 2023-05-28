@@ -29,3 +29,4 @@ export NPM_CONFIG_CACHE="$HOME/.cache/npm"
 
 export EDITOR="/usr/bin/nvim"
 export MOZ_ENABLE_WAYLAND=1
+export GPG_TTY=$(tty)

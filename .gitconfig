@@ -18,3 +18,9 @@
 	file-decoration-style = none
 	hunk-header-style = blue bold
 	hunk-header-decoration-style = ul
+[user]
+	email = himself@fantomebeig.net
+	name = Tom Béné
+	signingkey = 64A51EF5A62317E4
+[commit]
+	gpgsign = true

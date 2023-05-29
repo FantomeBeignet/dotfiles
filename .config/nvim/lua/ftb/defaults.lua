@@ -37,3 +37,6 @@ vim.o.termguicolors = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Global statusline
+vim.opt.laststatus = 3

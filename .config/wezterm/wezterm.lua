@@ -17,7 +17,7 @@ config.font = wezterm.font({
 	family = "Dank Mono",
 	harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
 })
-config.font_size = 16.0
+config.font_size = 17.0
 
 -- Color config
 config.colors = {

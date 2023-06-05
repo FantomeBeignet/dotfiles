@@ -41,6 +41,7 @@ local theme = {
 
 require("lualine").setup({
 	options = {
+		globalstatus = true,
 		theme = theme,
 	},
 })

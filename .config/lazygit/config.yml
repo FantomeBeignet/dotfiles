@@ -1,0 +1,13 @@
+disableStartupPopups: true
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+
+gui:
+  showBottomLine: false
+  showIcons: true
+  showRandomTip: false
+
+quitOnTopLevelReturn: true

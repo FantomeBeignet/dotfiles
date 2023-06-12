@@ -21,4 +21,8 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
+	{
+		"simrat39/symbols-outline.nvim",
+		opts = {},
+	},
 }

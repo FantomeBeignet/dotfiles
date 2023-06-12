@@ -7,7 +7,7 @@ local format_buffer = function(bufnr)
 	})
 end
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -43,6 +43,17 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>cf", function()
 		format_buffer(bufnr)
 	end, "Format buffer")
+
+	if client.server_capabilities.codeLensProvider then
+		local codelens = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true })
+		vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
+			group = codelens,
+			callback = function()
+				require("ftb.codelens").refresh_virtlines()
+			end,
+			buffer = bufnr,
+		})
+	end
 end
 
 local servers = {
@@ -50,7 +61,6 @@ local servers = {
 	gopls = {},
 	rust_analyzer = {},
 	tsserver = {},
-	ocamllsp = {},
 	pylsp = {},
 	pyright = {},
 	ruff_lsp = {},
@@ -111,3 +121,18 @@ mason_lspconfig.setup_handlers({
 vim.keymap.set("n", "<leader>ch", function()
 	vim.lsp.buf.hover()
 end, { desc = "Help for symbol" })
+
+lspconfig.ocamllsp.setup({
+	cmd = { "ocamllsp" },
+	filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+	root_dir = lspconfig.util.root_pattern(
+		"*.opam",
+		"esy.json",
+		"package.json",
+		".git",
+		"dune-project",
+		"dune-workspace"
+	),
+	on_attach = on_attach,
+	capabilities = capabilities,
+})

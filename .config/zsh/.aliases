@@ -1,0 +1,29 @@
+# pacman aliases
+alias pac=pacman
+alias pacb='makepkg -sci'
+alias paci="sudo pacman -Syu"
+alias pacI="sudo pacman -S"
+alias pacu="sudo pacman -Syyu"
+alias pacU="sudo pacman -U"
+alias pacd="sudo pacman -U *.pkg.*"
+alias pacr="sudo pacman -R"
+alias pacq="pacman -Si"
+alias pacQ="pacman -Qi"
+alias pacs="pacman -Ss"
+alias pacS="pacman -Qs"
+alias pacol="pacman -Qdt"
+alias pacor="sudo pacman -Rns \$(pacman -Qtdq)"
+alias pacown="pacman -Ql"
+alias pacblame="pacman -Qo"
+
+# exa aliases
+alias ls='exa --group-directories-first'
+alias ll='ls -l --git'        # Long format, git status
+alias l='ll -a -I ".git"'     # Long format, all files
+alias la='l -F --icons'       # Long format, with icons and file type indicators
+alias lg='la --git-ignore'    # la with respect to .gitignore
+alias lr='la -T'              # Long format, recursive as a tree
+alias lx='la -sextension'     # Long format, sort by extension
+alias lk='la -ssize'          # Long format, largest file size last
+alias lt='la -smodified'      # Long format, newest modification time last
+alias lc='la -schanged'       # Long format, newest status change (ctime) last

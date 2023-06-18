@@ -1,0 +1,28 @@
+# Aliases
+$ZDOTDIR/.aliases
+
+# Utils
+belak/zsh-utils path:utility
+
+# Completions
+zsh-users/zsh-completions path:src kind:fpath
+belak/zsh-utils path:completion
+
+# Prompt
+sindresorhus/pure
+
+# Z
+agkozak/zsh-z
+
+# Autosuggestions
+zsh-users/zsh-autosuggestions 
+
+# Syntax highlighting
+zdharma-continuum/fast-syntax-highlighting 
+
+# History search
+zsh-users/zsh-history-substring-search 
+belak/zsh-utils path:history
+
+# vi mode
+jeffreytse/zsh-vi-mode

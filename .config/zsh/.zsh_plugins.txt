@@ -9,7 +9,7 @@ zsh-users/zsh-completions path:src kind:fpath
 belak/zsh-utils path:completion
 
 # Prompt
-sindresorhus/pure
+FantomeBeignet/pure
 
 # Z
 agkozak/zsh-z

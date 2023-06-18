@@ -7,7 +7,6 @@ git:
 
 gui:
   showBottomLine: false
-  showIcons: true
   showRandomTip: false
 
 quitOnTopLevelReturn: true

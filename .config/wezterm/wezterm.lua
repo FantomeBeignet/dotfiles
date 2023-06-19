@@ -22,7 +22,7 @@ config.font_size = 17.0
 -- Color config
 config.colors = {
 	-- The default text color
-	foreground = "#e2e1ea",
+	foreground = "#e1e2ea",
 	-- The default background color
 	background = "#2b2b40",
 
@@ -48,24 +48,24 @@ config.colors = {
 	split = "#444444",
 
 	ansi = {
-		"#201a28",
+		"#161622",
 		"#d08092",
 		"#99c7ab",
 		"#e5aa8a",
 		"#98aedd",
 		"#b08cc5",
 		"#80bfd1",
-		"#e2e1ea",
+		"#e1e2ea",
 	},
 	brights = {
-		"#3e3e4c",
+		"#6e6e7e",
 		"#d897a5",
 		"#a6ceb5",
 		"#dacd8b",
-		"#7da6ff",
+		"#5678c2",
 		"#c28ecd",
-		"#0db9d7",
-		"#e2e1ea",
+		"#90c5b5",
+		"#e1e2ea",
 	},
 }
 
@@ -87,6 +87,8 @@ config.default_prog = {
 	"-l",
 	"tmux attach || tmux",
 }
+
+config.warn_about_missing_glyphs = false
 
 -- and finally, return the configuration to wezterm
 return config

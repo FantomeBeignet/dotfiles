@@ -18,7 +18,27 @@ null_ls.setup({
 		formatters.goimports_reviser,
 		formatters.golines,
 		formatters.ocamlformat,
-		formatters.prettierd,
+		formatters.prettierd.with({
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"css",
+				"scss",
+				"less",
+				"html",
+				"json",
+				"jsonc",
+				"yaml",
+				"markdown",
+				"markdown.mdx",
+				"graphql",
+				"handlebars",
+				"svelte",
+			},
+		}),
 		formatters.ruff,
 		formatters.rustfmt,
 		formatters.stylua,
@@ -37,4 +57,3 @@ null_ls.setup({
 		end
 	end,
 })
-

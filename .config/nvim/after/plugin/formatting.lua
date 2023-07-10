@@ -37,6 +37,7 @@ null_ls.setup({
 				"graphql",
 				"handlebars",
 				"svelte",
+				"astro",
 			},
 		}),
 		formatters.ruff,

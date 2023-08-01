@@ -34,7 +34,8 @@ export PATH="$PNPM_HOME:$PATH"
 alias cat=bat
 
 # Man with syntax highlighting
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -pl man'"
+export MANROFFOPT="-c"
 
 # Better help commands
 alias bathelp='bat --plain --language=help'

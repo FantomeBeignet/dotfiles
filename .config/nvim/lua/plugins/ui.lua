@@ -1,51 +1,29 @@
 return {
 
 	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
+		"nvim-tree/nvim-web-devicons",
+	},
+
+	{
+		"MunifTanjim/nui.nvim",
 	},
 
 	{
 		"nvim-lualine/lualine.nvim",
-		opts = {
-			options = {
-				icons_enabled = true,
-				component_separators = "|",
-				section_separators = "",
-			},
-		},
+		lazy = true,
 	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		opts = {
-			char = "»",
+			char = "│",
 			show_trailing_blankline_indent = false,
 		},
 	},
 
-	{ "numToStr/Comment.nvim", opts = {} },
-
 	{
 		"petertriho/nvim-scrollbar",
-	},
-
-	{
-		"kevinhwang91/nvim-hlslens",
-		config = function()
-			require("scrollbar.handlers.search").setup({
-				-- hlslens config overrides
-			})
-		end,
-	},
+		lazy = true,
 	},
 
 	{
@@ -55,6 +33,7 @@ return {
 				signs = false,
 			})
 		end,
+		lazy = true,
 	},
 
 	{
@@ -62,13 +41,41 @@ return {
 		config = function()
 			require("telescope").load_extension("ui-select")
 		end,
+		lazy = true,
 	},
 
 	{
 		"b0o/incline.nvim",
+		lazy = true,
 	},
 
 	{
 		"levouh/tint.nvim",
+		lazy = true,
+	},
+
+	{
+		"nyngwang/murmur.lua",
+		lazy = true,
+	},
+
+	{
+		"rcarriga/nvim-notify",
+	},
+
+	{
+		"VonHeikemen/searchbox.nvim",
+	},
+
+	{
+		"VonHeikemen/fine-cmdline.nvim",
+	},
+
+	{
+		"utilyre/barbecue.nvim",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
 	},
 }

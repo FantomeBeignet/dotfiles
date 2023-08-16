@@ -22,7 +22,10 @@ return {
 	},
 
 	{
-		"simrat39/symbols-outline.nvim",
-		opts = {},
+		"jinzhongjia/LspUI.nvim",
+	},
+
+	{
+		"rmagatti/goto-preview",
 	},
 }

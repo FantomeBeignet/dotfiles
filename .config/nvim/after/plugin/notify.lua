@@ -1,0 +1,13 @@
+require("notify").setup({
+	timeout = 3000,
+	max_height = function()
+		return math.floor(vim.o.lines * 0.50)
+	end,
+	max_width = function()
+		return math.floor(vim.o.columns * 0.50)
+	end,
+	render = "compact",
+	stages = "static",
+})
+
+vim.notify = require("notify")

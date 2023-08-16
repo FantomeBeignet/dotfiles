@@ -1,8 +1,8 @@
 local icons = {
-	Error = "",
-	Warn = "",
-	Info = "",
-	Hint = "󰌵",
+	Error = "",
+	Warn = "",
+	Info = "",
+	Hint = "",
 }
 
 for type, icon in pairs(icons) do
@@ -12,8 +12,8 @@ end
 
 vim.diagnostic.config({
 	virtual_text = {
-		source = "always",
-		prefix = "■",
+		source = "if_many",
+		prefix = " ",
 	},
 	severity_sort = true,
 	float = {

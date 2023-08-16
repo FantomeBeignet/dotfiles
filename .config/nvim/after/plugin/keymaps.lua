@@ -1,8 +1,10 @@
 -- which-key group names
 require("which-key").register({
 	["<leader>c"] = { name = "+code" },
+	["<leader>e"] = { name = "+edit" },
 	["<leader>f"] = { name = "+find" },
 	["<leader>h"] = { name = "+harpoon" },
+	["<leader>s"] = { name = "+search" },
 	["<leader>t"] = { name = "+terminal" },
 })
 
@@ -77,7 +79,7 @@ end, { desc = "Mark 4" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>d", function()
-	vim.diagnostic.open_float()
+	require("LspUI.diagnostic").run("next")
 end, { desc = "Open floating diagnostic" })
 
 require("leap").add_default_mappings()
@@ -101,3 +103,62 @@ vim.keymap.set("n", "<leader>z", require("zen-mode").toggle, { desc = "Toggle Ze
 -- Splits
 vim.keymap.set("n", "<leader><Bslash>", "<cmd>vsp<cr>", { desc = "Vertical split" })
 vim.keymap.set("n", "<leader>-", "<cmd>sp<cr>", { desc = "Horizontal split" })
+
+-- Utility edit keymaps
+vim.keymap.set("n", "<leader>er", require("genghis").renameFile, { desc = "Rename file" })
+vim.keymap.set("n", "<leader>em", require("genghis").moveAndRenameFile, { desc = "Move file" })
+vim.keymap.set("n", "<leader>ed", require("genghis").duplicateFile, { desc = "Duplicate file" })
+vim.keymap.set("n", "<leader>ex", require("genghis").chmodx, { desc = "Make file executable" })
+
+-- LSP related keymaps
+vim.keymap.set("n", "<leader>cr", require("LspUI.rename").run, { desc = "Rename" })
+vim.keymap.set("n", "<leader>ca", require("LspUI.code_action").run, { desc = "Code Action" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "Goto References" })
+vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+vim.keymap.set("n", "<leader>cd", require("LspUI.peek_definition").run, { desc = "Preview Definition" })
+vim.keymap.set(
+	"n",
+	"<leader>ct",
+	require("goto-preview").goto_preview_type_definition,
+	{ desc = "Preview Type Definition" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>ci",
+	require("goto-preview").goto_preview_implementation,
+	{ desc = "Preview Implementation" }
+)
+vim.keymap.set("n", "<leader>ch", require("LspUI.hover").run, { desc = "Hover Documentation" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+vim.keymap.set("n", "<leader>cwa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder" })
+vim.keymap.set("n", "<leader>cwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder" })
+vim.keymap.set("n", "<leader>cwl", function()
+	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, { desc = "List Workspace Folders" })
+
+-- Nabla
+vim.keymap.set("n", "<leader>mp", require("nabla").popup, { desc = "Open math popup" })
+
+-- Searchbox
+vim.keymap.set("n", "<leader>ss", require("searchbox").incsearch, { desc = "Search" })
+vim.keymap.set("n", "<leader>sr", require("searchbox").replace, { desc = "Search and Replace" })
+vim.keymap.set("n", "<leader>sa", function()
+	require("searchbox").match_all({ confirm = true })
+end, { desc = "Match all" })
+
+-- Cmdline
+vim.keymap.set("n", "<CR>", require("fine-cmdline").open, { desc = "Open Cmdline" })
+
+-- Luasnip
+local ls = require("luasnip")
+vim.keymap.set({ "i", "s" }, "<c-l>", function()
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<c-h>", function()
+	if ls.jumpable(-1) then
+		ls.jump(-1)
+	end
+end, { silent = true })

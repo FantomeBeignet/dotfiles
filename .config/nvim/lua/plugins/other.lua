@@ -31,4 +31,13 @@ return {
 		"akinsho/flutter-tools.nvim",
 		opts = {},
 	},
+
+	{
+		"chrisgrieser/nvim-genghis",
+	},
+
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+	},
 }

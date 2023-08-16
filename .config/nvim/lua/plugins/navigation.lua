@@ -1,36 +1,37 @@
 return {
 
 	{
-		'nvim-telescope/telescope.nvim',
-		version = '*',
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		"nvim-telescope/telescope.nvim",
+		version = "*",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			borderchars = {
-				prompt = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
-				results = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
-				preview = { '▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' },
+				prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+				results = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
+				preview = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
 			},
-		}
+		},
 	},
 
 	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'make',
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
 		cond = function()
-			return vim.fn.executable 'make' == 1
+			return vim.fn.executable("make") == 1
 		end,
 	},
 
 	{
-		'nvim-telescope/telescope-file-browser.nvim',
-		dependencies = { 'nvim-telescope/telescope.nvim' },
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
 
 	{
-		'ThePrimeagen/harpoon'
+		"ThePrimeagen/harpoon",
 	},
 
 	{
 		"gnikdroy/projections.nvim",
+		branch = "pre_release",
 	},
 }

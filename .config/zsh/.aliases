@@ -27,3 +27,5 @@ alias lx='la -sextension'     # Long format, sort by extension
 alias lk='la -ssize'          # Long format, largest file size last
 alias lt='la -smodified'      # Long format, newest modification time last
 alias lc='la -schanged'       # Long format, newest status change (ctime) last
+
+alias pcat='bat -APp'

@@ -16,12 +16,6 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Telescope keymaps
-vim.keymap.set(
-	"n",
-	"<leader>b",
-	require("telescope").extensions.file_browser.file_browser,
-	{ noremap = true, desc = "Open file browser" }
-)
 vim.keymap.set("n", "<leader>fF", require("telescope.builtin").oldfiles, { desc = "Find recently opened files" })
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Find existing buffers" })
 vim.keymap.set("n", "<leader>fg", function()
@@ -162,3 +156,5 @@ vim.keymap.set({ "i", "s" }, "<c-h>", function()
 		ls.jump(-1)
 	end
 end, { silent = true })
+
+vim.keymap.set("n", "<leader>b", require("carbon").explore_float, { desc = "Open File Browser" })

@@ -28,4 +28,14 @@ alias lk='la -ssize'          # Long format, largest file size last
 alias lt='la -smodified'      # Long format, newest modification time last
 alias lc='la -schanged'       # Long format, newest status change (ctime) last
 
+# cat
+alias cat=bat
 alias pcat='bat -APp'
+
+# nvim
+alias vim=nvim
+
+# misc
+alias ytdl='youtube-dl'
+alias sn='shutdown now'
+alias hxd=hexyl

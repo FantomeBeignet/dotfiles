@@ -23,6 +23,7 @@ return {
 
 	{
 		"jinzhongjia/LspUI.nvim",
+		branch = "legacy",
 	},
 
 	{

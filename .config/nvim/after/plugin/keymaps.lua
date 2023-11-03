@@ -3,7 +3,7 @@ require("which-key").register({
 	["<leader>c"] = { name = "+code" },
 	["<leader>e"] = { name = "+edit" },
 	["<leader>f"] = { name = "+find" },
-	["<leader>h"] = { name = "+harpoon" },
+	-- ["<leader>h"] = { name = "+harpoon" },
 	["<leader>s"] = { name = "+search" },
 	["<leader>t"] = { name = "+terminal" },
 })
@@ -34,9 +34,9 @@ end, { desc = "Find Help" })
 vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, { desc = "Find current Word" })
 vim.keymap.set("n", "<leader>fG", require("telescope.builtin").live_grep, { desc = "Find by Grep" })
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "Find Diagnostics" })
-vim.keymap.set("n", "<leader>fm", function()
-	require("telescope").extensions.harpoon.marks({ layout_config = { height = 7 } })
-end, { desc = "Find Marks" })
+-- vim.keymap.set("n", "<leader>fm", function()
+-- 	require("telescope").extensions.harpoon.marks({ layout_config = { height = 7 } })
+-- end, { desc = "Find Marks" })
 vim.keymap.set("n", "<leader>fr", require("telescope.builtin").lsp_references, { desc = "Find References" })
 vim.keymap.set("n", "<leader>fc", require("telescope.builtin").lsp_incoming_calls, { desc = "Find Incoming Calls" })
 vim.keymap.set("n", "<leader>fC", require("telescope.builtin").lsp_outgoing_calls, { desc = "Find Outgoing Calls" })
@@ -53,21 +53,21 @@ vim.keymap.set("n", "<leader>fM", function()
 end, { desc = "Find Workspace Symbols" })
 
 -- [[ Configure Harpoon ]]
-local hm = require("harpoon.mark")
-local hui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>ha", hm.add_file, { desc = "Harpoon Add" })
-vim.keymap.set("n", "<leader>hq", function()
-	hui.nav_file(1)
-end, { desc = "Mark 1" })
-vim.keymap.set("n", "<leader>hw", function()
-	hui.nav_file(2)
-end, { desc = "Mark 2" })
-vim.keymap.set("n", "<leader>he", function()
-	hui.nav_file(3)
-end, { desc = "Mark 3" })
-vim.keymap.set("n", "<leader>hr", function()
-	hui.nav_file(4)
-end, { desc = "Mark 4" })
+-- local hm = require("harpoon.mark")
+-- local hui = require("harpoon.ui")
+-- vim.keymap.set("n", "<leader>ha", hm.add_file, { desc = "Harpoon Add" })
+-- vim.keymap.set("n", "<leader>hq", function()
+-- 	hui.nav_file(1)
+-- end, { desc = "Mark 1" })
+-- vim.keymap.set("n", "<leader>hw", function()
+-- 	hui.nav_file(2)
+-- end, { desc = "Mark 2" })
+-- vim.keymap.set("n", "<leader>he", function()
+-- 	hui.nav_file(3)
+-- end, { desc = "Mark 3" })
+-- vim.keymap.set("n", "<leader>hr", function()
+-- 	hui.nav_file(4)
+-- end, { desc = "Mark 4" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

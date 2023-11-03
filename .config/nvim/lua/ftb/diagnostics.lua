@@ -11,10 +11,7 @@ for type, icon in pairs(icons) do
 end
 
 vim.diagnostic.config({
-	virtual_text = {
-		source = "if_many",
-		prefix = " ",
-	},
+	virtual_text = false,
 	severity_sort = true,
 	float = {
 		source = "if_many",

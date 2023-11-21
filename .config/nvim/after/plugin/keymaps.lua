@@ -73,7 +73,7 @@ end, { desc = "Find Workspace Symbols" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>d", function()
-	require("LspUI.diagnostic").run("next")
+	require("LspUI").api.diagnostic("next")
 end, { desc = "Open floating diagnostic" })
 
 require("leap").add_default_mappings()
@@ -105,12 +105,12 @@ vim.keymap.set("n", "<leader>ed", require("genghis").duplicateFile, { desc = "Du
 vim.keymap.set("n", "<leader>ex", require("genghis").chmodx, { desc = "Make file executable" })
 
 -- LSP related keymaps
-vim.keymap.set("n", "<leader>cr", require("LspUI.rename").run, { desc = "Rename" })
-vim.keymap.set("n", "<leader>ca", require("LspUI.code_action").run, { desc = "Code Action" })
+vim.keymap.set("n", "<leader>cr", require("LspUI").api.rename, { desc = "Rename" })
+vim.keymap.set("n", "<leader>ca", require("LspUI").api.code_action, { desc = "Code Action" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
 vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "Goto References" })
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
-vim.keymap.set("n", "<leader>cd", require("LspUI.peek_definition").run, { desc = "Preview Definition" })
+vim.keymap.set("n", "<leader>cd", require("LspUI").api.peek_definition, { desc = "Preview Definition" })
 vim.keymap.set(
 	"n",
 	"<leader>ct",
@@ -123,7 +123,7 @@ vim.keymap.set(
 	require("goto-preview").goto_preview_implementation,
 	{ desc = "Preview Implementation" }
 )
-vim.keymap.set("n", "<leader>ch", require("LspUI.hover").run, { desc = "Hover Documentation" })
+vim.keymap.set("n", "<leader>ch", require("LspUI").api.hover, { desc = "Hover Documentation" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 vim.keymap.set("n", "<leader>cwa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder" })
 vim.keymap.set("n", "<leader>cwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder" })

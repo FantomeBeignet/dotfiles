@@ -205,8 +205,7 @@ bar {
 }
 
 default_border none
-gaps vertical 10
-gaps horizontal 12
+gaps inner 10
 
 # Workspace bindings
 assign [app_id="wezterm"] workspace 1

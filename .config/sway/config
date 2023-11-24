@@ -210,10 +210,10 @@ gaps horizontal 12
 
 # Workspace bindings
 assign [app_id="wezterm"] workspace 1
-assign [app_id="firefox"] workspace 2
+assign [app_id="LibreWolf"] workspace 2
 
 # Autostarts
 exec wezterm
-exec firefox
+exec librewolf
 
 include /etc/sway/config.d/*
